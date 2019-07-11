@@ -1,0 +1,31 @@
+git的使用
+
+1.当你第一次创建git账户，请输入的代码
+git init
+git add .
+git commit -m "desc"
+git remote add origin master 地址
+git push -u origin master
+
+2.当你第二次及后续更新代码，请输入
+git add .
+git commit -m "desc"
+git push
+
+3.当你需要将git上的项目更新到本地时，请输入
+git pull
+
+4.当你需要fork他人的项目时，请输入下面代码克隆下来
+git clone 他的地址
+
+5.当你需要更新fork他人的项目时，请输入
+git remote add 他的名字 他的地址
+git fetch 他的名字
+git merge 他的名字/master  注：如果这一步失败有两种可能：
+1.你没有更新自己的代码到暂存区；2.合并失败，你需要解决冲突
+
+6.当你希望提交自己的代码到他人的项目上时
+将本地的代码先提交到自己的github上，在上面点击pull request
+
+注意：如果git上的项目更新了，如果你想更新，需要先将自己的代码提交到暂存区，
+再将git上的项目同步到本地，不然会报错
