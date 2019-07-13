@@ -1,17 +1,34 @@
 <template>
   <div id="app">
     <div class="mainpage">
-
       <div class="alltop">
-
+        <el-row class="bg_opacity"></el-row>
+        <div class="logo_opacity"></div>
+        <el-row class="logo">
+          <router-link to="/app"><img src="./assets/common_pic/logo.png" alt="平驾租车"></router-link>
+        </el-row>
+        <el-row class="header">
+          <span class="name">平驾时分租车系统</span>
+          <div class="sea">
+            <div class="sea_input">
+              <span></span>
+              <input v-model="input" class="input">
+            </div>
+            <el-button>搜索</el-button>
+            <i class="el-icon-s-operation"></i>
+            <i class="el-icon-bell"></i>
+            <i class="el-icon-switch-button"></i>
+          </div>
+        </el-row>
       </div>
       <div class="allbottom">
+        <div class="aside_opacity"></div>
         <div class="rukou">
-          <router-link to="/mend">门店管理</router-link>
-          <router-link to="/feiy">费用管理</router-link>
-          <router-link to="/yud">预定管理</router-link>
-          <router-link to="/huiy">会员管理</router-link>
-          <router-link to="/chel">车辆管理</router-link>
+          <router-link to="/mend"><span></span>门店管理</router-link>
+          <router-link to="/feiy"><span></span>费用管理</router-link>
+          <router-link to="/yud"><span></span>预定管理</router-link>
+          <router-link to="/huiy"><span></span>会员管理</router-link>
+          <router-link to="/chel"><span></span>车辆管理</router-link>
         </div>
         <router-view class="showc"></router-view>
       </div>
@@ -27,6 +44,11 @@ import Rem from "./assets/js/rem.js"
 import Login from "./page/login.vue"
 export default {
   name: 'App',
+   data() {
+    return {
+      input:""
+    }
+  },
   methods: {
     
   },
@@ -41,19 +63,20 @@ export default {
 </script>
 
 <style lang="less">
+@import url("./assets/css/common.css");
 .mainpage,.log,html,body,#app{
   width: 100%;
   height: 100%;
+}
+body{
+  background: url("./assets/common_pic/bg.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 .log{
   position: absolute;
   top:0;
   left: 0;
   display: none;
-}
-ul,h1,h2,h3,h4,h5,h6,p,body,html{
-  margin: 0;
-  padding: 0;
 }
 #app {
   margin: 0;
@@ -62,20 +85,173 @@ ul,h1,h2,h3,h4,h5,h6,p,body,html{
   overflow: hidden;
   .alltop{
     width: 100%;
-    height: .98rem;
-    background: rgba(0,0,0,.5);
+    color: #fff;
+    text-align: center;
+    height: .99rem;
+    line-height: .99rem;
+    font-size: .3rem;
+    position: relative;
+    display: flex;
+    .bg_opacity{
+      height: .99rem;
+      width: 100%;
+      background: #eee;
+      opacity: .4;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .logo{
+      width: 219px;
+      a{
+        display: block;
+        display: flex;
+        justify-content: center;
+        img{
+          width: .9rem;
+          height: .9rem;
+        }
+      }
+    }
+    .logo_opacity{
+      width: 219px;
+      height: 100%;
+      background: #313131;
+      opacity: .4;
+      
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .header{
+      flex: 1;
+      display: flex;
+      padding: 0 .28rem 0 .31rem;
+      .name{
+        font-size: .24rem;
+      }
+      .sea{
+        flex: 1;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .sea_input{
+          display: flex;
+          align-items: center;
+
+          width: 2.5rem;
+          background: #fff;
+          opacity: .6;
+          height: .5rem;
+          border-radius: 5px 0px 0px 5px;
+          .input{
+            flex: 1;
+            background: none;
+            height: .5rem;
+            text-indent: .1rem;
+          }
+          span{
+            display: block;
+            width: .33rem;
+            height: .33rem;
+            background: url("./assets/common_pic/icon_sea.png") no-repeat;
+            background-size: 100% 100%;
+            margin-left: .29rem;
+          }
+        }
+        .el-button{
+          border: none;
+          border-radius: 0;
+          width: .8rem;
+          height: .5rem;
+          color: #fff;
+          background-color: #ffe009;
+          font-size: .18rem;
+          border-radius: 0 5px 5px 0;
+        }
+        i{
+          margin-left: .3rem;
+        }
+      }
+    }
   }
   .allbottom{
     flex: 1;
     display: flex;
     height: 100%;
-    .rukou{
-      background: rgba(0,0,0,.3);
-      width:2.19rem;
+    position: relative;
+    .aside_opacity{
+      background: #313131;
+      opacity: .4;
+      width:219px;
       height: 100%;
-      font-size: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .rukou{
+      width:219px;
+      height: 100%;
+      font-size: .18rem;
+      z-index: 9;
       a{
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        height: .9rem;
+        span{
+          display: inline-block;
+          width: .27rem;
+          height: .24rem;
+          margin-right: .13rem;
+        }
+        &:nth-child(1) span{
+          background: url("./assets/common_pic/aside_icon1.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(2) span{
+          background: url("./assets/common_pic/aside_icon2.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(3) span{
+          background: url("./assets/common_pic/aside_icon3.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(4) span{
+          background: url("./assets/common_pic/aside_icon4.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(5) span{
+          background: url("./assets/common_pic/aside_icon5.png") no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      .router-link-active{
+        background: #ffe009;
+        color: #333;
+        &:nth-child(1) span{
+          background: url("./assets/common_pic/aside_icon_active_1.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(2) span{
+          background: url("./assets/common_pic/aside_icon_active_2.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(3) span{
+          background: url("./assets/common_pic/aside_icon_active_3.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(4) span{
+          background: url("./assets/common_pic/aside_icon_active_4.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(5) span{
+          background: url("./assets/common_pic/aside_icon_active_5.png") no-repeat;
+          background-size: 100% 100%;
+        }
       }
     }
     .showc{
