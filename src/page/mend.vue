@@ -1,10 +1,22 @@
 <template>
   <div>
-    门店管理
+    <Test>
+      <div class="head" slot='mend'>
+          <ul>
+            <li>
+              <router-link to="/chel">首页</router-link>
+            </li>
+          </ul>
+        </div>
+    </Test>
+    
+
+
   </div>
 </template>
 
 <script>
+import Test from './../components/test';
 export default {
   data() {
     return {
@@ -15,11 +27,11 @@ export default {
 
   },
   components: {
-
+    Test
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang='less'>
 
 </style>

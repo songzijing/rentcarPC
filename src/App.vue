@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Rem from "./assets/js/rem.js"
+
 import Login from "./page/login.vue"
 export default {
   name: 'App',
@@ -53,8 +53,7 @@ export default {
     
   },
   mounted () {
-    Rem.setRem();
-    window.onresize=Rem.setRem;
+  
   },
   components:{
     Login
@@ -87,13 +86,13 @@ body{
     width: 100%;
     color: #fff;
     text-align: center;
-    height: .99rem;
-    line-height: .99rem;
-    font-size: .3rem;
+    height: 99px;
+    line-height: 99px;
+    font-size: 30px;
     position: relative;
     display: flex;
     .bg_opacity{
-      height: .99rem;
+      height: 99px;
       width: 100%;
       background: #eee;
       opacity: .4;
@@ -109,8 +108,8 @@ body{
         display: flex;
         justify-content: center;
         img{
-          width: .9rem;
-          height: .9rem;
+          width: 90px;
+          height: 90px;
         }
       }
     }
@@ -129,7 +128,7 @@ body{
       display: flex;
       padding: 0 .28rem 0 .31rem;
       .name{
-        font-size: .24rem;
+        font-size: 24px;
       }
       .sea{
         flex: 1;
@@ -140,39 +139,38 @@ body{
         .sea_input{
           display: flex;
           align-items: center;
-
-          width: 2.5rem;
+          width: 250px;
           background: #fff;
           opacity: .6;
-          height: .5rem;
+          height: 50px;
           border-radius: 5px 0px 0px 5px;
           .input{
             flex: 1;
             background: none;
-            height: .5rem;
-            text-indent: .1rem;
+            height: 50px;
+            text-indent: 10px;
           }
           span{
             display: block;
-            width: .33rem;
-            height: .33rem;
+            width: 33px;
+            height: 33px;
             background: url("./assets/common_pic/icon_sea.png") no-repeat;
             background-size: 100% 100%;
-            margin-left: .29rem;
+            margin-left: 29px;
           }
         }
         .el-button{
           border: none;
           border-radius: 0;
-          width: .8rem;
-          height: .5rem;
+          width: 80px;
+          height: 50px;
           color: #fff;
           background-color: #ffe009;
-          font-size: .18rem;
+          font-size: 18px;
           border-radius: 0 5px 5px 0;
         }
         i{
-          margin-left: .3rem;
+          margin-left: 30px;
         }
       }
     }
@@ -182,6 +180,7 @@ body{
     display: flex;
     height: 100%;
     position: relative;
+    min-width: 1200px;
     .aside_opacity{
       background: #313131;
       opacity: .4;
@@ -194,19 +193,19 @@ body{
     .rukou{
       width:219px;
       height: 100%;
-      font-size: .18rem;
+      font-size: 18px;
       z-index: 9;
       a{
         display: flex;
         align-items: center;
         justify-content: center;
         color: #fff;
-        height: .9rem;
+        height: 90px;
         span{
           display: inline-block;
-          width: .27rem;
-          height: .24rem;
-          margin-right: .13rem;
+          width: 27px;
+          height: 24px;
+          margin-right: 13px;
         }
         &:nth-child(1) span{
           background: url("./assets/common_pic/aside_icon1.png") no-repeat;
