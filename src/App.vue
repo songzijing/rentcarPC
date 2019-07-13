@@ -137,7 +137,6 @@ body{
         .sea_input{
           display: flex;
           align-items: center;
-
           width: 250px;
           background: #fff;
           opacity: .6;
@@ -179,6 +178,7 @@ body{
     display: flex;
     height: 100%;
     position: relative;
+    min-width: 1200px;
     .aside_opacity{
       background: #313131;
       opacity: .4;
