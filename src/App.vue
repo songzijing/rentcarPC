@@ -101,6 +101,7 @@ body{
     }
     .logo{
       width: 219px;
+      min-width: 219px;
       a{
         display: block;
         display: flex;
@@ -125,6 +126,7 @@ body{
       flex: 1;
       display: flex;
       padding: 0 28px 0 31px;
+      min-width: 1300px;
       .name{
         font-size: 24px;
       }
@@ -178,7 +180,7 @@ body{
     display: flex;
     height: 100%;
     position: relative;
-    min-width: 1200px;
+    min-width: 1300px;
     .aside_opacity{
       background: #313131;
       opacity: .4;
@@ -193,6 +195,7 @@ body{
       height: 100%;
       font-size: 18px;
       z-index: 9;
+      min-width: 219px;
       a{
         display: flex;
         align-items: center;
