@@ -19,82 +19,98 @@
                 <li>
                   车体
                   <span>(有无划痕)</span>
-                  <el-radio v-model="a" label="1">
-                    <span class="radio">有</span>
-                  </el-radio>
-                  <el-radio v-model="a" label="2">
-                    <span class="radio">无</span>
-                  </el-radio>
+                  <div class="li-box">
+                   <el-radio v-model="car_a" label="1-1">
+                    有
+                   </el-radio>
+                   <el-radio v-model="car_a" label="1-2">
+                    无
+                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   车灯
                   <span>(是否完整)</span>
-                  <el-radio v-model="b" label="5">
-                    <span class="radio">是</span>
+                   <div class="li-box">
+                  <el-radio v-model="car_b" label="2-1">
+                    是
                   </el-radio>
-                  <el-radio v-model="b" label="6">
-                    <span class="radio">否</span>
+                  <el-radio v-model="car_b" label="2-2">
+                    否
                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   电瓶
                   <span>(是否损坏)</span>
-                  <el-radio v-model="c" label="3">
-                    <span class="radio">是</span>
+                  <div class="li-box">
+                  <el-radio v-model="car_c" label="8-1">
+                    是
                   </el-radio>
-                  <el-radio v-model="c" label="4">
-                    <span class="radio">否</span>
+                  <el-radio v-model="car_c" label="8-2">
+                    否
                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   油表
                   <span>(是否满格)</span>
-                  <el-radio v-model="radio" label="15">
-                    <span class="radio">是</span>
+                  <div class="li-box">
+                  <el-radio v-model="car_d" label="3-1">
+                    是
                   </el-radio>
-                  <el-radio v-model="radio" label="16">
-                    <span class="radio">否</span>
+                  <el-radio v-model="car_d" label="3-2">
+                    否
                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   刹车
                   <span>(是否损坏)</span>
-                  <el-radio v-model="radio" label="13">
-                    <span class="radio">是</span>
+                  <div class="li-box">
+                  <el-radio v-model="car_e" label="4-1">
+                    是
                   </el-radio>
-                  <el-radio v-model="radio" label="14">
-                    <span class="radio">否</span>
+                  <el-radio v-model="car_e" label="4-2">
+                   否
                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   空调
                   <span>(运营状况)</span>
-                  <el-radio v-model="radio" label="11">
-                    <span class="radio">好</span>
+                  <div class="li-box">
+                  <el-radio v-model="car_f" label="5-1">
+                    好
                   </el-radio>
-                  <el-radio v-model="radio" label="12">
-                    <span class="radio">坏</span>
+                  <el-radio v-model="car_f" label="5-2">
+                    坏
                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   违章
                   <span>(是否违章)</span>
-                  <el-radio v-model="radio" label="9">
-                    <span class="radio">是</span>
+                  <div class="li-box">
+                  <el-radio v-model="car_g" label="6-1">
+                    是
                   </el-radio>
-                  <el-radio v-model="radio" label="10">
-                    <span class="radio">否</span>
+                  <el-radio v-model="car_g" label="6-2">
+                    否
                   </el-radio>
+                  </div>
                 </li>
                 <li>
                   试驾
                   <span>(是否完整)</span>
-                  <el-radio v-model="radio" label="7">
-                    <span class="radio">是</span>
+                  <div class="li-box">
+                  <el-radio v-model="car_h" label="7-1">
+                    是
                   </el-radio>
-                  <el-radio v-model="radio" label="8">
-                    <span class="radio">否</span>
+                  <el-radio v-model="car_h" label="7-2">
+                    否
                   </el-radio>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -104,28 +120,46 @@
           <div class="grid-content bg-purple">
             <p>结算</p>
             <div class="account">
-            <div class="top">
-              <div class="block">
-                <span class="demonstration ti">租车时间:</span>
-                <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+              <div class="top">
+                <div class="block">
+                  <span class="demonstration ti">租车时间 :</span>
+                  <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+                </div>
+                <div class="block">
+                  <span class="demonstration">-</span>
+                  <el-date-picker
+                    v-model="value2"
+                    align="right"
+                    type="date"
+                    placeholder="选择日期"
+                    :picker-options="pickerOptions"
+                  ></el-date-picker>
+                </div>
               </div>
-              <div class="block">
-                <span class="demonstration">-</span>
-                <el-date-picker
-                  v-model="value2"
-                  align="right"
-                  type="date"
-                  placeholder="选择日期"
-                  :picker-options="pickerOptions"
-                ></el-date-picker>
+              <div class="con">
+                <span>支付方式 :</span>
+                <div class="con-s">
+                  <input type="text" />
+                  <el-dropdown>
+                    <span class="el-dropdown-link">
+                      <i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item>微信</el-dropdown-item>
+                      <el-dropdown-item>支付宝</el-dropdown-item>
+                      <el-dropdown-item>银行卡</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </div>
               </div>
-            </div>
-            <div class="con">
-                 <span>支付方式 :</span>
-              </div> 
               <div class="bo">
                 <span>支付金额 :</span>
+                <p class="bo-s" contenteditable="true"></p>
               </div>
+              <div class="foot">
+                <button>完成</button>
+                <p>第一页，共1页</p>
+                </div>
             </div>
           </div>
         </el-col>
@@ -140,10 +174,45 @@ import Test from "./../components/test";
 export default {
   data() {
     return {
-      radio: "1",
-      a:"2",
-      b:"3",
-      c:"4"
+      car_a: "",
+      car_b: "",
+      car_c: "",
+      car_d: "",
+      car_e: "",
+      car_f: "",
+      car_g: "",
+      car_h: "",
+      pickerOptions: {
+        disabledDate(time) {
+          return time.getTime() > Date.now();
+        },
+        shortcuts: [
+          {
+            text: "今天",
+            onClick(picker) {
+              picker.$emit("pick", new Date());
+            }
+          },
+          {
+            text: "昨天",
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24);
+              picker.$emit("pick", date);
+            }
+          },
+          {
+            text: "一周前",
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit("pick", date);
+            }
+          }
+        ]
+      },
+      value1: "",
+      value2: ""
     };
   },
   methods: {},
@@ -175,54 +244,118 @@ export default {
       border-right: 1px solid #ccc;
       ul {
         &:last-child {
-          margin-bottom: 25px;
+          margin-bottom: 60px;
         }
+
         li {
+            display:flex ;
+            
           font-size: 16px;
-          margin-top: 17px;
+          margin-top: 50px;
           span {
-            margin: 0 232px 0 15px;
+            // margin: 0 515px 0 15px;
             color: #999999;
             font-size: 14px;
           }
+          .li-box{
+             flex:1;
+             text-align: right;
+             padding-right:30px;
           .el-radio {
             width: 44px;
           }
           .radio {
             margin-left: 2px;
           }
+          }
         }
       }
     }
-    .account{
-      .top{
+    .account {
+      .top {
         overflow: hidden;
-        .el-date-editor.el-input{
-          width: 150px;
+        margin-top: 42px;
+        .el-date-editor.el-input {
+          width: 220px;
         }
-        .block{
+        .block {
           float: left;
-          .el-input--prefix .el-input__inner{
-              height:35px;
+          .el-input--prefix .el-input__inner {
+            height: 40px;
           }
-          .demonstration{
-            margin:0 3px;
-            font-size:16px;
+          .demonstration {
+            margin: 0 15px;
+            font-size: 16px;
           }
-          .ti{
-            margin-right:20px;
+          .ti {
+            margin-right: 40px;
           }
         }
-        
       }
-      .con{
-          span{
-               font-size:16px;
-           }
+      .con {
+        overflow: hidden;
+        margin-top: 30px;
+        span {
+          float: left;
+          font-size: 16px;
+          margin: 9px 0px 0px 16px;
+        }
+        .con-s {
+          input {
+            float: left;
+            background:#fff;
+            width: 160px;
+            height: 38px;
+            border: none;
+            border-radius: 5px;
+          }
+          float: left;
+          width: 200px;
+          height: 40px;
+          border: 1px solid #dde0e7;
+          border-radius: 5px;
+          margin: 0px 0px 0px 48px;
+
+          .el-icon--right {
+            margin-left: -5px;
+            // float: left;
+          }
+        }
       }
-      .bo{
-        span{
+      .bo {
+        overflow: hidden;
+        margin-top:30px;
+        span {
+          float: left;
+          font-size: 16px;
+          margin: 9px 0px 0px 16px;
+        }
+        .bo-s{
+          float: left;
+          overflow: hidden;
+          width: 200px;
+          height: 40px;
+          line-height: 40px;
+          border: 1px solid #dde0e7;
+          border-radius: 5px;
+          margin: 0px 0px 0px 48px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      .foot{
+        float:right;
+        button{
+          color: #fff;
+          background: #ffe009;
+          padding:10px 20px;
           font-size:16px;
+          border-radius: 5px;
+          margin:260px 50px 0px 0px;
+        }
+        p{
+          font-size:14px;
+          margin:60px 50px 0px 0px;
         }
       }
     }
