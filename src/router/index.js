@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Test from "../components/test.vue"
-import Mend from "../page/mend/mend.vue"
+// 门店首页
+import Mend from "../page/mend/index.vue"
+import OrderTotal from "../page/mend/orderTotal.vue"
 import Chel from "../page/chel.vue"
 import Yud from "../page/yud.vue"
 import Huiy from "../page/huiy.vue"
@@ -19,7 +21,12 @@ let a = new Router({
     routes: [{
             path: '/mend',
             name: 'Mend',
-            component: Mend
+            component: Mend,
+            children:[{
+                path:"ordertotal",
+                name:"OrderTotal",
+                component:OrderTotal
+            }]
         },
         {
             path: '/feiy',
