@@ -63,20 +63,14 @@
                <span>处理状态</span>
                <span>操作</span>
              </li>
-             <li>
-               <span>2018-12-07</span>
-               <span>SUV</span>
-               <span>日租</span>
-               <span>已完成</span>
-               <span>无</span>
+             <li v-for="(item,index) in list" :key='index' class='hov'>
+               <span>{{item.date}}</span>
+               <span>{{item.xh}}</span>
+               <span>{{item.zp}}</span>
+               <span>{{item.wc}}</span>
+               <span>{{item.zt}}</span>
              </li>
-             <li>
-               <span>2018-12-07</span>
-               <span>SUV</span>
-               <span>日租</span>
-               <span>已完成</span>
-               <span>无</span>
-             </li>
+          
            </ul>
          </fieldset>
        </form>
@@ -88,7 +82,22 @@
 export default {
   data() {
     return {
-
+       list:[
+         {
+           "date":"2018-12-07",
+           "xh":"SUV",
+           "zp":"日租",
+           "wc":"已完成",
+           "zt":"无"
+         },
+        {
+           "date":"2018-8-07",
+           "xh":"SUV",
+           "zp":"月租",
+           "wc":"未完成",
+           "zt":"有"
+         }
+       ]
     }
   },
   methods: {
@@ -156,6 +165,9 @@ export default {
         span:nth-child(1){
           padding-left:30px;
         }
+      }
+      .hov:hover{
+         background:rgb(235, 235, 235);
       }
     }
  
