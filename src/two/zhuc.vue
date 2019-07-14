@@ -61,17 +61,18 @@ export default {
           width:250px;
           margin-left:25px;
           border-radius:5px;
+          padding-left:20px;
       }
     }
     .sex{
-      input{
-          border:1px solid #00a0e9;
-          height:15px;
-          width:15px;
-          margin-left:25px;
-          border-radius:50%;
-          border:block;
-      }
+      // input{
+      //     border:1px solid #00a0e9;
+      //     height:15px;
+      //     width:15px;
+      //     margin-left:25px;
+      //     border-radius:50%;
+      //     border:block;
+      // }
     }
     .btn{
           padding-bottom:70px;

@@ -5,7 +5,7 @@
          <fieldset class='info'>
            <legend>会员基本信息</legend>
            <div class='box'>
-             <div>
+             <div class='top'>
                <p>
                 姓名：
              <input type="text" value='周天' name='xm'>
@@ -15,7 +15,7 @@
                 <input type="text" name='email'>
               </p>
              </div>
-            <div>
+            <div class='top'>
               <p>
              手机号：
              <input type="text" name='phone' value='15198095032'>
@@ -46,12 +46,15 @@
            </p>
            </div>
            <div>
-              <button>充值</button>
+             <router-link to='/huiy/chongz'>
+               <button>充值</button>
+             </router-link>
+              
             </div>
            </div>
          </fieldset>
          <fieldset class='info'>
-           <legend>消费记录</legend>
+           <legend class='xf'>消费记录</legend>
            <ul>
              <li>
                <span>时间</span>
@@ -104,13 +107,19 @@ export default {
     border-radius:10px;
   
     .info{
-      // margin-top:-20px;
+      position:relative;
       .box{
       display:flex;
       justify-content:space-between;
       margin:-10px 0;
+      position:relative;
+      top:-20px;
+      .top{
+        p:last-child{
+          margin-top:10px;
+        }
+      }
       p{
-        
         height:40px;
         input{
           border:1px solid #00a0e9;
@@ -134,8 +143,12 @@ export default {
         }
       }
     }
+    .xf{
+       position:relative;
+       top:-30px;;
+    }
     ul{
-      margin:-30px -14px 0;
+      margin:-40px -14px 0;
       li{
         border: 1px solid #ccc;
         display:flex;

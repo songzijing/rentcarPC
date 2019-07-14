@@ -50,6 +50,7 @@ export default {
           width:250px;
           margin-left:25px;
           border-radius:5px;
+          padding-left:20px;
         }
      }
      .zh{
