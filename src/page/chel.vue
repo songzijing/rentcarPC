@@ -4,8 +4,7 @@
       <div class="head" slot='chel'>
           <ul>
             <li>
-              <router-link to="/mend">车辆查询</router-link>
-              <router-link to="/">车辆管理</router-link>
+              <router-link to="/">车辆查询</router-link>
             </li>
           </ul>
         </div>
@@ -80,7 +79,7 @@ export default {
   flex-grow:0;
   .main{
     p{
-      margin-top:18px;
+      margin-top:25px;
       font-size:17px;
       input{
         border-radius:5px;
@@ -97,7 +96,7 @@ export default {
     }
   }
    .cx{
-     padding:18px 0 10px;
+     padding:18px 0 30px;
        .l{
          border:1px solid #00a1e7;
        }
@@ -111,7 +110,7 @@ export default {
      }
    }
    .info{
-     padding-bottom:60px;
+     padding-bottom:220px;
    }
 }
 </style>

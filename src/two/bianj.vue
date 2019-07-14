@@ -43,7 +43,7 @@ export default {
    .box{
      .amount{
        font-size:16px;
-        padding-top:100px;
+        padding-top:200px;
      }
      input{
           border:1px solid #ccc;
@@ -60,8 +60,8 @@ export default {
        }
      }
      .btn{
-          padding-bottom:120px;
-          padding-top:60px;
+          padding-bottom:188px;
+          padding-top:117px;
           text-align:center;
           button{
             width:250px;

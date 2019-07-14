@@ -5,7 +5,7 @@
          <fieldset class='info'>
            <legend>会员基本信息</legend>
            <div class='box'>
-             <div class='top'>
+             <div >
                <p>
                 姓名：
              <input type="text" value='周天' name='xm'>
@@ -15,7 +15,7 @@
                 <input type="text" name='email'>
               </p>
              </div>
-            <div class='top'>
+            <div>
               <p>
              手机号：
              <input type="text" name='phone' value='15198095032'>
@@ -63,20 +63,14 @@
                <span>处理状态</span>
                <span>操作</span>
              </li>
-             <li>
-               <span>2018-12-07</span>
-               <span>SUV</span>
-               <span>日租</span>
-               <span>已完成</span>
-               <span>无</span>
+             <li v-for="(item,index) in list" :key='index' class='hov'>
+               <span>{{item.date}}</span>
+               <span>{{item.xh}}</span>
+               <span>{{item.zp}}</span>
+               <span>{{item.wc}}</span>
+               <span>{{item.zt}}</span>
              </li>
-             <li>
-               <span>2018-12-07</span>
-               <span>SUV</span>
-               <span>日租</span>
-               <span>已完成</span>
-               <span>无</span>
-             </li>
+          
            </ul>
          </fieldset>
        </form>
@@ -88,7 +82,22 @@
 export default {
   data() {
     return {
-
+       list:[
+         {
+           "date":"2018-12-07",
+           "xh":"SUV",
+           "zp":"日租",
+           "wc":"已完成",
+           "zt":"无"
+         },
+        {
+           "date":"2018-8-07",
+           "xh":"SUV",
+           "zp":"月租",
+           "wc":"未完成",
+           "zt":"有"
+         }
+       ]
     }
   },
   methods: {
@@ -102,25 +111,20 @@ export default {
 
 <style scoped lang='less'>
 .chax{
-    margin:30px 0 30px 0;
+    margin:30px 0;
+    padding:0 30px;
     background:#fff;
     border-radius:10px;
-  
-    .info{
-      position:relative;
+      legend{
+        padding-top:25px;
+      }
       .box{
       display:flex;
       justify-content:space-between;
-      margin:-10px 0;
-      position:relative;
-      top:-20px;
-      .top{
-        p:last-child{
-          margin-top:10px;
-        }
-      }
+  
       p{
         height:40px;
+        margin-top:20px;
         input{
           border:1px solid #00a0e9;
           border-radius:5px;
@@ -143,26 +147,30 @@ export default {
         }
       }
     }
-    .xf{
-       position:relative;
-       top:-30px;;
-    }
+    
     ul{
-      margin:-40px -14px 0;
+      margin:0 -45px;
       li{
-        border: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         display:flex;
         justify-content:space-between;
-        height:58px;
-        line-height:58px;
+        height:60px;
+        line-height:60px;
         span{
           display:block;
-          width:100px;
+          width:150px;
           text-align:center;
         }
+        span:nth-child(1){
+          padding-left:30px;
+        }
+      }
+      .hov:hover{
+         background:rgb(235, 235, 235);
       }
     }
-    }
+ 
     
 }
 </style>
