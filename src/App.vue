@@ -25,9 +25,9 @@
         <div class="aside_opacity"></div>
         <div class="rukou">
           <router-link to="/mend"><span></span>门店管理</router-link>
-          <router-link to="/feiy"><span></span>费用管理</router-link>
+          <router-link to="/feiy"><span></span>会员管理</router-link>
           <router-link to="/yud"><span></span>预定管理</router-link>
-          <router-link to="/huiy"><span></span>会员管理</router-link>
+          <router-link to="/huiy"><span></span>费用管理</router-link>
           <router-link to="/chel"><span></span>车辆管理</router-link>
         </div>
         <router-view class="showc"></router-view>

@@ -2,8 +2,8 @@
   <div>
       <ul class="two_nav">
       <li>
-        <router-link to="/">
-          <div class="img"></div>
+        <router-link to="/mend/ordertotal">
+          <img src="../../assets/img/home_icon1.png" alt="">
           <div class="info">
             <p>下单总数</p>
             <p>567</p>
@@ -12,7 +12,7 @@
       </li>
       <li>
         <router-link to="/">
-          <div class="img"></div>
+          <img src="../../assets/img/home_icon2.png" alt="">
           <div class="info">
             <p>上传照片数量</p>
             <p>666</p>
@@ -21,7 +21,7 @@
       </li>
       <li>
         <router-link to="/">
-          <div class="img"></div>
+          <img src="../../assets/img/home_icon3.png" alt="">
           <div class="info">
             <p>会员总数</p>
             <p>88</p>
@@ -30,7 +30,7 @@
       </li>
       <li>
         <router-link to="/">
-          <div class="img"></div>
+          <img src="../../assets/img/home_icon4.png" alt="">
           <div class="info">
             <p>在线客户</p>
             <p>30</p>
@@ -60,7 +60,7 @@ export default {
 <style scoped lang="less">
 .two_nav{
     font-size: 18px;
-    padding: 0 31px 30px 31px;
+    padding-bottom: 30px;
     display: flex;
     li{
       flex: 1;
@@ -71,10 +71,9 @@ export default {
       a{
         display: flex;
         color: #333;
-        .img{
+        img{
           width: 100px;
           height: 100px;
-          background: red;
           border-radius: 50%;
         }
         .info{
