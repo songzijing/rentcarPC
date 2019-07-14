@@ -4,7 +4,7 @@
       <div class="head" slot='chel'>
           <ul>
             <li>
-              <router-link to="/mend">车辆管理</router-link>
+              <router-link to="/">车辆管理</router-link>
             </li>
           </ul>
         </div>
