@@ -5,7 +5,7 @@
          <fieldset class='info'>
            <legend>会员基本信息</legend>
            <div class='box'>
-             <div class='top'>
+             <div >
                <p>
                 姓名：
              <input type="text" value='周天' name='xm'>
@@ -15,7 +15,7 @@
                 <input type="text" name='email'>
               </p>
              </div>
-            <div class='top'>
+            <div>
               <p>
              手机号：
              <input type="text" name='phone' value='15198095032'>
@@ -102,25 +102,20 @@ export default {
 
 <style scoped lang='less'>
 .chax{
-    margin:30px 0 30px 0;
+    margin:30px 0;
+    padding:0 30px;
     background:#fff;
     border-radius:10px;
-  
-    .info{
-      position:relative;
+      legend{
+        padding-top:25px;
+      }
       .box{
       display:flex;
       justify-content:space-between;
-      margin:-10px 0;
-      position:relative;
-      top:-20px;
-      .top{
-        p:last-child{
-          margin-top:10px;
-        }
-      }
+  
       p{
         height:40px;
+        margin-top:20px;
         input{
           border:1px solid #00a0e9;
           border-radius:5px;
@@ -143,26 +138,27 @@ export default {
         }
       }
     }
-    .xf{
-       position:relative;
-       top:-30px;;
-    }
+    
     ul{
-      margin:-40px -14px 0;
+      margin:0 -45px;
       li{
-        border: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         display:flex;
         justify-content:space-between;
-        height:58px;
-        line-height:58px;
+        height:60px;
+        line-height:60px;
         span{
           display:block;
-          width:100px;
+          width:150px;
           text-align:center;
+        }
+        span:nth-child(1){
+          padding-left:30px;
         }
       }
     }
-    }
+ 
     
 }
 </style>

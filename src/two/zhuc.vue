@@ -7,9 +7,8 @@
          </p>
          <p class='sex'>
             性  别 ：
-            <input type="radio" name="sex" value='男'> 男
-            <input type="radio" name="sex" value='女'> 女 
-          
+            <el-radio v-model="radio" label="1" class='nan dx'>男</el-radio>
+            <el-radio v-model="radio" label="2" classs='dx'>女</el-radio>
          </p>
          <p>
            手机号:
@@ -31,6 +30,7 @@
 export default {
   data() {
     return {
+      radio: '1'
 
     }
   },
@@ -52,9 +52,10 @@ export default {
     align-items:center;
     border-radius:10px;
     div{
-      margin-top:10px;
+      margin-top:30px;
     }
     p{
+      margin-bottom:10px;
       input{
           border:1px solid #00a0e9;
           height:41px;
@@ -65,18 +66,16 @@ export default {
       }
     }
     .sex{
-      // input{
-      //     border:1px solid #00a0e9;
-      //     height:15px;
-      //     width:15px;
-      //     margin-left:25px;
-      //     border-radius:50%;
-      //     border:block;
-      // }
+      .nan{
+          margin-left:25px;
+      }
+      .dx{
+        font-size:18px;
+      }
     }
     .btn{
-          padding-bottom:70px;
-          padding-top:70px;
+          padding-bottom:180px;
+          padding-top:100px;
           text-align:center;
           button{
             width:250px;
