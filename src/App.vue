@@ -40,7 +40,6 @@
 </template>
 
 <script>
-
 import Login from "./page/login.vue"
 export default {
   name: 'App',
@@ -53,7 +52,6 @@ export default {
     
   },
   mounted () {
-  
   },
   components:{
     Login
@@ -126,7 +124,7 @@ body{
     .header{
       flex: 1;
       display: flex;
-      padding: 0 .28rem 0 .31rem;
+      padding: 0 28px 0 31px;
       .name{
         font-size: 24px;
       }
@@ -204,7 +202,7 @@ body{
         span{
           display: inline-block;
           width: 27px;
-          height: 24px;
+          height: 27px;
           margin-right: 13px;
         }
         &:nth-child(1) span{
