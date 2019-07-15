@@ -1,0 +1,224 @@
+@media all and (max-width: 1366px) {
+  .log {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+
+  #app {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .alltop {
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      height: 70px;
+      line-height: 70px;
+      font-size: 20px;
+      position: relative;
+      display: flex;
+
+      .bg_opacity {
+        height: 70px;
+        width: 100%;
+        background: #eee;
+        opacity: .4;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .logo {
+        width: 153px;
+        min-width: 153px;
+
+        a {
+          display: block;
+          display: flex;
+          justify-content: center;
+
+          img {
+            width: 44px;
+            height: 44px;
+          }
+        }
+      }
+
+      .logo_opacity {
+        width: 153px;
+        height: 100%;
+        background: #313131;
+        opacity: .4;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .header {
+        flex: 1;
+        display: flex;
+        padding: 0 19px 0 22px;
+        min-width: 68px;
+
+        .name {
+          font-size: 17px;
+        }
+
+        .sea {
+          flex: 1;
+
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          .sea_input {
+            display: flex;
+            align-items: center;
+            width: 173px;
+            background: #fff;
+            opacity: .6;
+            height: 35px;
+            border-radius: 3px 0px 0px 3px;
+
+            .input {
+              flex: 1;
+              background: none;
+              height: 35px;
+              text-indent: 7px;
+            }
+
+            span {
+              display: block;
+              width: 23px;
+              height: 23px;
+              background: url("../common_pic/icon_sea.png") no-repeat;
+              background-size: 100% 100%;
+              margin-left: 20px;
+            }
+          }
+
+          .el-button {
+            border: none;
+            border-radius: 0;
+            width: 56px;
+            height: 35px;
+            color: #fff;
+            background-color: #ffe009;
+            font-size: 13px;
+            border-radius: 0 3px 3px 0;
+          }
+
+          i {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+
+    .allbottom {
+      flex: 1;
+      display: flex;
+      height: 100%;
+      position: relative;
+      min-width: 68px;
+
+      .aside_opacity {
+        background: #313131;
+        opacity: .4;
+        width: 153px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .rukou {
+        width: 153px;
+        height: 100%;
+        font-size: 13px;
+        z-index: 9;
+        min-width: 153px;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          height: 44px;
+
+          span {
+            display: inline-block;
+            width: 27px;
+            height: 27px;
+            margin-right: 13px;
+          }
+
+          &:nth-child(1) span {
+            background: url("../common_pic//aside_icon1.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(2) span {
+            background: url("../common_pic/aside_icon2.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(3) span {
+            background: url("../common_pic/aside_icon3.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(4) span {
+            background: url("../common_pic/aside_icon4.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(5) span {
+            background: url("../common_pic/aside_icon5.png") no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+
+        .router-link-active {
+          background: #ffe009;
+          color: #333;
+
+          &:nth-child(1) span {
+            background: url("../common_pic/aside_icon_active_1.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(2) span {
+            background: url("../common_pic/aside_icon_active_2.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(3) span {
+            background: url("../common_pic/aside_icon_active_3.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(4) span {
+            background: url("../common_pic/aside_icon_active_4.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &:nth-child(5) span {
+            background: url("../common_pic/aside_icon_active_5.png") no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+      }
+
+      .showc {
+        flex: 1;
+      }
+    }
+  }
+}

@@ -3,14 +3,14 @@
     <div class='box'>
       <p class='amount'>
       <span>充值金额 :</span>
-      <input type='text'>
+      <input type='text' v-model='cz'>
     </p>
     <p class='zh'>
       <span>账户余额 :</span>
-      <span>5000</span>
+      <span>{{yue}}</span>
     </p>
     <p class='btn'>
-      <button>确定</button>
+      <button @click='btn'>确定</button>
     </p>
     </div>
   </div>
@@ -20,11 +20,15 @@
 export default {
   data() {
     return {
-
+       yue:0,
+       cz:''
     }
   },
   methods: {
-
+    btn(){
+      this.yue+=(this.cz)-0;
+      
+    }
   },
   components: {
 

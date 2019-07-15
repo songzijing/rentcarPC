@@ -1,33 +1,59 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Test from "../components/test.vue"
-// 门店首页
-import Mend from "../page/mend/index.vue"
+// 门店
+import Mend from "../page/mend/mend.vue"
+import HomeList from "../page/mend/homeList.vue"
 import OrderTotal from "../page/mend/orderTotal.vue"
+import OnlineCustomers from "../page/mend/OnlineCustomers.vue"
+import Vip from "../page/mend/Vip.vue"
+import ImgNum from "../page/mend/imgNum"
+// 车俩管理
 import Chel from "../page/chel.vue"
+// 预订管理
 import Yud from "../page/yud.vue"
+import Shoul from "../two/shoul"
+import Yudg from "../two/yudg"
+// 会员管理
 import Huiy from "../page/huiy.vue"
+// 费用管理
 import Feiy from "../page/feiy.vue"
 import Zhuc from "../two/zhuc"
 import Bianj from "../two/bianj"
 import Chax from "../two/chax"
 import Chongz from "../two/chongz"
-import Shoul from "../two/shoul"
-import Yudg from "../two/yudg"
-import Login from "../page/login.vue"
+import Login from "../page/login"
 
 Vue.use(Router)
 
 let a = new Router({
-    routes: [
-        {
+    routes: [{
             path: '/mend',
             name: 'Mend',
             component: Mend,
             children:[{
+                path:"homelist",
+                name:"HomeList",
+                component:HomeList
+            },{
+                path:"",
+                name:"HomeList",
+                component:HomeList
+            },{
                 path:"ordertotal",
                 name:"OrderTotal",
                 component:OrderTotal
+            },{
+                path:"online",
+                name:"OnlineCustomers",
+                component:OnlineCustomers
+            },{
+                path:"vip",
+                name:"Vip",
+                component:Vip
+            },{
+                path:"imgnum",
+                name:"ImgNum",
+                component:ImgNum
             }]
         },
         {
@@ -39,11 +65,10 @@ let a = new Router({
             path: '/huiy',
             name: 'Huiy',
             component: Huiy,
-            children: [
-                {
+            children: [{
                     path: '/',
                     name: 'Zhuc',
-                    component: Zhuc
+                    redirect: "Zhuc"
                 }, {
                     path: 'zhuc',
                     name: 'Zhuc',
@@ -102,5 +127,5 @@ let a = new Router({
         }
     ]
 })
-a.push('/yudg')
+a.push('/mend')
 export default a

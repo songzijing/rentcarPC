@@ -7,15 +7,6 @@
         <h5>最新订单</h5>
         <!-- 最新订单列表 -->
         <Accept></Accept>
-        <!-- 分页器 -->
-        <div class="block">
-          <el-pagination
-            small
-            layout="prev, pager, next"
-            :pageSize="4"
-            :total="20">
-          </el-pagination>
-        </div>
       </div>
     </div>
     <LookOver v-else></LookOver>
@@ -23,8 +14,8 @@
 </template>
 <script>
 import Accept from "./accept";
-import TwoNav from './twoNav';
-import LookOver from '../../two/mend/lookover'
+import TwoNav from './component/twoNav';
+import LookOver from '../../two/mend/lookover';
 
 export default {
   data() {
@@ -56,12 +47,6 @@ export default {
             color: #333;
             border-bottom: 1px solid #e8e8e8;
         }
-    }
-    .block{
-        height: 90px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
     }
 }
 </style>

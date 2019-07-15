@@ -3,7 +3,7 @@
       <ul class="two_nav">
       <li>
         <router-link to="/mend/ordertotal">
-          <img src="../../assets/img/home_icon1.png" alt="">
+          <img src="../../../assets/img/home_icon1.png" alt="">
           <div class="info">
             <p>下单总数</p>
             <p>567</p>
@@ -11,8 +11,8 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/">
-          <img src="../../assets/img/home_icon2.png" alt="">
+        <router-link to="/mend/imgnum">
+          <img src="../../../assets/img/home_icon2.png" alt="">
           <div class="info">
             <p>上传照片数量</p>
             <p>666</p>
@@ -20,8 +20,8 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/">
-          <img src="../../assets/img/home_icon3.png" alt="">
+        <router-link to="/mend/vip">
+          <img src="../../../assets/img/home_icon3.png" alt="">
           <div class="info">
             <p>会员总数</p>
             <p>88</p>
@@ -29,8 +29,8 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/">
-          <img src="../../assets/img/home_icon4.png" alt="">
+        <router-link to="/mend/online">
+          <img src="../../../assets/img/home_icon4.png" alt="">
           <div class="info">
             <p>在线客户</p>
             <p>30</p>
@@ -49,7 +49,7 @@ export default {
     }
   },
   methods: {
-
+    
   },
   components: {
 
