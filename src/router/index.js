@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Test from "../components/test.vue"
-import Mend from "../page/mend/mend.vue"
+// 门店首页
+import Mend from "../page/mend/index.vue"
+import OrderTotal from "../page/mend/orderTotal.vue"
 import Chel from "../page/chel.vue"
 import Yud from "../page/yud.vue"
 import Huiy from "../page/huiy.vue"
@@ -12,6 +14,7 @@ import Chax from "../two/chax"
 import Chongz from "../two/chongz"
 import Shoul from "../two/shoul"
 import Yudg from "../two/yudg"
+import Login from "../page/login.vue"
 
 Vue.use(Router)
 
@@ -20,7 +23,12 @@ let a = new Router({
         {
             path: '/mend',
             name: 'Mend',
-            component: Mend
+            component: Mend,
+            children:[{
+                path:"ordertotal",
+                name:"OrderTotal",
+                component:OrderTotal
+            }]
         },
         {
             path: '/feiy',
@@ -86,8 +94,13 @@ let a = new Router({
             path: '/chel',
             name: 'Chel',
             component: Chel
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login
         }
     ]
 })
-a.push('/yud')
+a.push('/yudg')
 export default a

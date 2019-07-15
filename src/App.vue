@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="mainpage">
+    <div class="mainpage" >
       <div class="alltop">
         <el-row class="bg_opacity"></el-row>
         <div class="logo_opacity"></div>
@@ -25,16 +25,18 @@
         <div class="aside_opacity"></div>
         <div class="rukou">
           <router-link to="/mend"><span></span>门店管理</router-link>
-          <router-link to="/feiy"><span></span>费用管理</router-link>
-          <router-link to="/yud"><span></span>预定管理</router-link>
           <router-link to="/huiy"><span></span>会员管理</router-link>
+          <router-link to="/yud"><span></span>预定管理</router-link>
+          <router-link to="/feiy"><span></span>费用管理</router-link>
           <router-link to="/chel"><span></span>车辆管理</router-link>
         </div>
         <router-view class="showc"></router-view>
       </div>
     </div>
     <div class="log">
-      <Login></Login>
+      <Login>
+       
+      </Login>
     </div>
   </div>
 </template>
@@ -45,7 +47,8 @@ export default {
   name: 'App',
    data() {
     return {
-      input:""
+      input:"",
+      
     }
   },
   methods: {
@@ -69,8 +72,12 @@ body{
   background: url("./assets/common_pic/bg.jpg") no-repeat;
   background-size: 100% 100%;
 }
+// .mainpage{
+//   display: none;
+// }
 .log{
   position: absolute;
+  z-index: 99;
   top:0;
   left: 0;
   display: none;

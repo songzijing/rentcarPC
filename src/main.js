@@ -23,7 +23,7 @@ Vue.config.productionTip = false;
 let mokuai1={
   state:{
     a:'aaaa',
-    b:'bbbb'
+    b:'bbbb',
   }
 }
 let mokuai2={
@@ -35,11 +35,15 @@ let mokuai2={
 /* eslint-disable no-new */
 let store=new Vuex.Store({
   state:{
-    num:97
+    num:97,
+    listShow:true
   },
   mutations: {
     change(state,a){
       state.num=a;
+    },
+    isshow(state){
+      state.listShow = !state.listShow;
     }
   },
   getters:{
