@@ -1,32 +1,32 @@
 <template>
   <div class='chax'>
      <div class='out'>
-       <form action="#">
+       <form>
          <fieldset class='info'>
            <legend>会员基本信息</legend>
            <div class='box'>
              <div >
-               <p>
+               <p class='bon'>
                 姓名：
-             <input type="text" value='周天' name='xm'>
+                <input type="text" name='xm' v-model='xm_'>
               </p>
               <p class='hs'>
                 邮箱：
                 <input type="text" name='email'>
               </p>
              </div>
-            <div>
-              <p>
+            <div >
+              <p class='bon'>
              手机号：
              <input type="text" name='phone' value='15198095032'>
-           </p>
+             </p>
            <p>
              证件号：
              <input type="text" name="zjh" value='410211199703204025'>
            </p>
             </div>
             <div>
-              <button>查询</button>
+              <button @click='btn_'>查询</button>
             </div>
            </div>
          </fieldset>
@@ -63,15 +63,24 @@
                <span>处理状态</span>
                <span>操作</span>
              </li>
-             <li v-for="(item,index) in list" :key='index' class='hov'>
-               <span>{{item.date}}</span>
-               <span>{{item.xh}}</span>
-               <span>{{item.zp}}</span>
-               <span>{{item.wc}}</span>
-               <span>{{item.zt}}</span>
+             <li class='hov'>
+               <span>{{lists.g_time}}</span>
+               <span>{{lists.c_model}}</span>
+               <span>{{lists.rental}}</span>
+               <span>{{lists.done}}</span>
+               <span>{{lists.operate}}</span>
              </li>
-          
            </ul>
+           <div class='num'>
+              <div class="block">
+                  <el-pagination
+                    :current-page.sync="currentPage3"
+                    :page-size="10"
+                    layout="prev, pager, next, jumper"
+                    :total="100">
+                  </el-pagination>
+                </div>
+           </div>
          </fieldset>
        </form>
      </div>
@@ -82,26 +91,43 @@
 export default {
   data() {
     return {
+        xm_:'',
        list:[
          {
-           "date":"2018-12-07",
-           "xh":"SUV",
-           "zp":"日租",
-           "wc":"已完成",
-           "zt":"无"
+           "name":"周天",
+           "tel":"13935567894",
+           "g_time":"2018-12-07",
+           "c_model":"SUV",
+           "rental":"日租",
+           "done":"已完成",
+           "operate":"无"
          },
         {
-           "date":"2018-8-07",
-           "xh":"SUV",
-           "zp":"月租",
-           "wc":"未完成",
-           "zt":"有"
+          "name":"陈先生",
+           "tel":"13935567894",
+           "g_time":"2018-8-07",
+           "c_model":"ABC",
+           "rental":"月租",
+           "done":"未完成",
+           "operate":"有"
          }
-       ]
+       ],
+       lists:"",
+       currentPage3: 3
     }
   },
   methods: {
-
+      btn_(){
+          var c= this.name_;
+        for(let i in this.list){
+            if(this.list[i].car===c){
+               this.lists=this.list[i]
+            }else if(c===""){
+               alert("请输入车主名");
+            }
+            console.log(this.lists)
+        }
+      }
   },
   components: {
 
@@ -116,15 +142,16 @@ export default {
     background:#fff;
     border-radius:10px;
       legend{
-        padding-top:25px;
+        padding-top:20px;
       }
       .box{
       display:flex;
       justify-content:space-between;
-  
+       .bon{
+           margin-bottom:20px;
+       }
       p{
         height:40px;
-        margin-top:20px;
         input{
           border:1px solid #00a0e9;
           border-radius:5px;
@@ -170,7 +197,11 @@ export default {
          background:rgb(235, 235, 235);
       }
     }
- 
+    .num{
+      text-align:right;
+      padding-top:10px;
+      height:40px;
+    }
     
 }
 </style>
