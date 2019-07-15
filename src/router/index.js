@@ -18,15 +18,14 @@ import Yudg from "../two/yudg"
 Vue.use(Router)
 
 let a = new Router({
-    routes: [
-        {
+    routes: [{
             path: '/mend',
             name: 'Mend',
             component: Mend,
-            children:[{
-                path:"ordertotal",
-                name:"OrderTotal",
-                component:OrderTotal
+            children: [{
+                path: "ordertotal",
+                name: "OrderTotal",
+                component: OrderTotal
             }]
         },
         {
@@ -38,8 +37,7 @@ let a = new Router({
             path: '/huiy',
             name: 'Huiy',
             component: Huiy,
-            children: [
-                {
+            children: [{
                     path: '/',
                     name: 'Zhuc',
                     component: Zhuc
@@ -96,5 +94,5 @@ let a = new Router({
         }
     ]
 })
-a.push('/yud')
+a.push('/mend')
 export default a
