@@ -3,14 +3,14 @@
     <div class='box'>
       <p class='amount'>
       <span>原手机号 :</span>
-      <input type='text'>
+      <input type='text' v-model='phone'>
     </p>
     <p class='zh'>
-      <span>新手机号 :</span>
-      <input type='text'>
+      <span>新手机号 : </span>
+      <input type='text' v-model='n_phone'>
     </p>
     <p class='btn'>
-      <button>确定注册</button>
+      <button @click='btn'>确定注册</button>
     </p>
     </div>
   </div>
@@ -20,11 +20,46 @@
 export default {
   data() {
     return {
-
+      phone:'',
+      n_phone:'',
+      list:[
+         {
+           "name":"周天",
+           "tel":"13935594304",
+           "g_time":"2018-12-07",
+           "c_model":"SUV",
+           "rental":"日租",
+           "done":"已完成",
+           "operate":"无"
+         },
+        {
+          "name":"陈先生",
+           "tel":"18239953334",
+           "g_time":"2018-8-07",
+           "c_model":"ABC",
+           "rental":"月租",
+           "done":"未完成",
+           "operate":"有"
+         }
+       ],
+       lists:""
     }
   },
   methods: {
-
+    btn(){
+       var p= this.phone;
+        for(let i in this.list){
+            if(this.list[i].tel===p){
+               this.list[i].tel=this.n_phone;
+               this.lists=this.list[i];
+               alert("成功更改手机号")
+            }else if(this.phone===''){
+               alert('请输入手机号')
+            }
+            console.log(this.lists)
+        }
+      
+    }
   },
   components: {
 

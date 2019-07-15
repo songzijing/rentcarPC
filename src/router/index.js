@@ -25,8 +25,7 @@ import Chongz from "../two/chongz"
 Vue.use(Router)
 
 let a = new Router({
-    routes: [
-        {
+    routes: [{
             path: '/mend',
             name: 'Mend',
             component: Mend,
@@ -65,9 +64,8 @@ let a = new Router({
             path: '/huiy',
             name: 'Huiy',
             component: Huiy,
-            children: [
-                {
-                    path: '',
+            children: [{
+                    path: '/',
                     name: 'Zhuc',
                     redirect: "Zhuc"
                 }, {
