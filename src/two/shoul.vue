@@ -4,7 +4,7 @@
     <div class="box-s">
       <h2>用户信息</h2>
       <el-row>
-        <el-col :span="12">
+        <el-col :span="12" style="text-align:center">
           <div class="grid-content bg-purple">
             <ul class="tab">
               <li><label for="">姓名：</label><input type="text"><span>*</span></li>
@@ -27,7 +27,7 @@
       </el-row>
       <h2>订单信息</h2>
       <el-row>
-        <el-col :span="12">
+        <el-col :span="12" style="text-align:center">
           <div class="grid-content bg-purple">
             <ul class="tab">
               <li><label for="">定金：</label><input type="text"><span>*</span></li>
@@ -44,7 +44,19 @@
         </el-col>
       </el-row>
     </div>
-
+    <div class="inner">
+      <h2>车辆信息</h2>
+      <div class="info">
+       <img src="./../assets/img/acceptance_1.png" alt="">
+        <div>
+          <p>宝马3系</p>
+          <p>车牌号：豫A8888</p>
+          <p>3厢 2.0自动 乘坐5人</p>
+          <p>日租价：599</p> 
+        </div>
+      </div>
+      <button>提交</button>
+    </div>
     </div>
   </div>
 </template>
@@ -70,14 +82,17 @@ export default {
       h2{
         height:45px;
         line-height: 45px;
-        margin:0px 0px 0px 26px;
+        margin:0px 0px 0px 163px;
+        font-size:18px;
      }
      .tab{
        li{
+         height:60px;
          label{
            display:inline-block;
             width:146px;
             text-align:right;
+            font-size:16px;
          }
          input{
            width:248px;
@@ -93,8 +108,47 @@ export default {
            color:#fa020e;
            margin-left: 10px;
          }
-       }
+       } 
      }
   }
+  .inner{
+    overflow: hidden;
+    h2{
+      height:45px;
+        line-height: 45px;
+        margin:12px 0px 12px 163px;
+        font-size:18px;
+    }
+    .info{
+         display: flex;
+         overflow: hidden;
+         width: 550px;
+         height:155px;
+         background: #fafafa;
+         img{
+             float: left;
+              width:320px;
+              height:130px;
+              padding:40px 50px 0px 37px;
+           }
+         div{
+           text-align: left;
+          p{
+            height:30px;
+            flex: 1;
+          }
+         }
+       }
+  }
+  button{
+    float: right;
+    color:#fff;
+    font-size:20px;
+    padding:10px 20px;
+    background: #ffe009;
+    border-radius: 5px;
+    margin:-100px 300px 0px 0px ;
+  }
+
 }
 </style>

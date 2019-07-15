@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="mainpage">
+    <div class="mainpage" >
       <div class="alltop">
         <el-row class="bg_opacity"></el-row>
         <div class="logo_opacity"></div>
@@ -34,28 +34,31 @@
       </div>
     </div>
     <div class="log">
-      <Login></Login>
+      <!-- <Login></Login> -->
     </div>
   </div>
 </template>
 
 <script>
-import Login from "./page/login.vue"
+// import Login from "./page/login"
 export default {
   name: 'App',
    data() {
     return {
-      input:""
+      input:"",
+      
     }
   },
   methods: {
     
   },
   mounted () {
+    this.$router.push('/mend')
   },
   components:{
-    Login
-  }
+    // Login
+  },
+  
 }
 </script>
 
@@ -70,8 +73,12 @@ body{
   background: url("./assets/common_pic/bg.jpg") no-repeat;
   background-size: 100% 100%;
 }
+// .mainpage{
+//   display: none;
+// }
 .log{
   position: absolute;
+  z-index: 99;
   top:0;
   left: 0;
   display: none;

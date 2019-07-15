@@ -163,7 +163,7 @@
             </span>
           </li>
         </ul>
-        <button></button>
+      
       </div>
     </div>
   </div>
@@ -233,7 +233,7 @@ export default {
             display: inline-block;
             text-align: center;
           }
-          span:nth-of-type(4){
+          span:nth-of-type(4),span:nth-of-type(3),span:nth-of-type(5){
             flex: 1;
           }
           span:nth-of-type(8){
@@ -245,7 +245,7 @@ export default {
             text-align: center;
           }
           span:nth-of-type(6) {
-            width: 210px;
+            width: 290px;
             text-align: center;
           }
           span:nth-of-type(5) {
@@ -254,15 +254,15 @@ export default {
           }
           .name{
             text-align: center;
-           width: 138px;
+           width: 300px;
           }
            span:nth-of-type(3) {
-            width: 130px;
+            min-width: 200px;
             text-align: center;
           }
           span:nth-of-type(2) {
             width: 140px;
-            text-align: center;
+            text-align: left;
           }
     }
     ul{
@@ -274,7 +274,7 @@ export default {
             display: inline-block;
             text-align: center;
           }
-          span:nth-child(3),span:nth-child(4){
+        span:nth-child(4),span:nth-child(3),span:nth-child(2),span:nth-child(5){
             flex: 1;
           }
           span:nth-child(8){
@@ -286,31 +286,29 @@ export default {
             text-align: center;
           }
           span:nth-child(6) {
-            width: 210px;
+            width: 260px;
             text-align: center;
           }
-          span:nth-child(5) {
-            width: 140px;
-            text-align: center;
-          }
+          // span:nth-child(5) {
+          //   width: 140px;
+          //   text-align: center;
+          // }
           span:nth-child(1) {
-            width: 155px;
+            width: 240px;
             text-align: center;
           }
-          span:nth-child(3) {
-            width: 130px;
-            text-align: center;
-          }
-          span:nth-child(2) {
-            width: 130px;
-            text-align: center;
-          }
+          // span:nth-child(3) {
+          //   width: 130px;
+          //   text-align: center;
+          // }
+          // span:nth-child(2) {
+          //   width: 130px;
+          //   text-align: center;
+          // }
           border-bottom: 1px solid #e8e8e8;
       }
     }
-    button{
-      
-    }
+   
   }
 }
 </style>

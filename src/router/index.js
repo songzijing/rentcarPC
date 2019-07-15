@@ -21,6 +21,7 @@ import Zhuc from "../two/zhuc"
 import Bianj from "../two/bianj"
 import Chax from "../two/chax"
 import Chongz from "../two/chongz"
+import Login from "../page/login"
 
 Vue.use(Router)
 
@@ -118,6 +119,11 @@ let a = new Router({
             path: '/chel',
             name: 'Chel',
             component: Chel
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login
         }
     ]
 })
