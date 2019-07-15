@@ -22,11 +22,13 @@ let a = new Router({
             path: '/mend',
             name: 'Mend',
             component: Mend,
-            children: [{
-                path: "ordertotal",
-                name: "OrderTotal",
-                component: OrderTotal
-            }]
+          children:[
+            {
+                path:"/ordertotal",
+                name:"OrderTotal",
+                component:OrderTotal
+            },
+          ]  
         },
         {
             path: '/feiy',
