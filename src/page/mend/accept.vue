@@ -1,14 +1,5 @@
 <template>
   <div class="acceptlist">
-    <!-- <header>
-      <span>车牌号</span>
-      <span>客户名称</span>
-      <span>订单状态</span>
-      <span>下单日期</span>
-      <span>生成日期</span>
-      <span>订单金额（元）</span>
-      <span>管理</span>
-    </header> -->
     <List>
       <span slot="one">车牌号</span>
       <span slot="two">客户名称</span>
@@ -55,48 +46,13 @@
         <span slot="seven_cont" @click="show">查看</span>
       </li>
     </List>
-    <!-- <ul class="list">
-      <li>
-        <span>豫A5421</span>
-        <span>王小虎</span>
-        <span>已完成</span>
-        <span>2019-05-21</span>
-        <span>2019-05-21</span>
-        <span>44</span>
-        <span @click="show">查看</span>
-      </li>
-      <li>
-        <span>豫A5421</span>
-        <span>王小虎</span>
-        <span>已完成</span>
-        <span>2019-05-21</span>
-        <span>2019-05-21</span>
-        <span>44</span>
-        <span @click="show">查看</span>
-      </li>
-      <li>
-        <span>豫A5421</span>
-        <span>王小虎</span>
-        <span>已完成</span>
-        <span>2019-05-21</span>
-        <span>2019-05-21</span>
-        <span>44</span>
-        <span @click="show">查看</span>
-      </li>
-      <li>
-        <span>豫A5421</span>
-        <span>王小虎</span>
-        <span>已完成</span>
-        <span>2019-05-21</span>
-        <span>2019-05-21</span>
-        <span>44</span>
-        <span @click="show">查看</span>
-      </li>
-    </ul> -->
+    <!-- 分页器 -->
+    <Page></Page>
   </div>
 </template>
 <script>
 import List from './component/list_slot'
+import Page from './component/page'
 
 export default {
   data() {
@@ -112,92 +68,11 @@ export default {
     }
   },
   components: {
-    List
+    List,
+    Page
   }
 }
 
-;
-
 </script>
 <style scoped lang='less'>
-// .acceptlist {
-  // header {
-  //   padding: 22px 30px;
-  //   font-size: 18px;
-  //   color: #333;
-  //   font-weight: normal;
-  //   text-align: center;
-  //   border-bottom: 1px solid #e8e8e8;
-  //   display: flex;
-  //   span {
-  //     display: inline-block;
-  //     width: 100%;
-      
-  //     &:nth-child(2) {
-  //       flex: 1;
-  //     }
-  //     &:nth-child(3) {
-  //       flex: 1;
-  //     }
-  //     &:nth-child(4) {
-  //       flex: 1;
-  //     }
-  //     &:nth-child(5) {
-  //       flex: 1;
-  //     }
-  //     &:nth-child(6) {
-  //       flex: 1;
-  //     }
-  //     &:nth-child(1) {
-  //       text-align: left;
-  //       width: 60px;
-  //     }
-  //     &:nth-child(7) {
-  //       text-align: right;
-  //       width: 40px;
-  //     }
-  //   }
-  // }
-
-  // .list {
-  //   li {
-  //     padding:22px 30px;
-  //     font-size:14px;
-  //     color:#333;
-  //     border-bottom: 1px solid #e8e8e8;
-  //     display: flex;
-  //     span {
-  //       display: inline-block;
-  //       text-align: center;
-  //     }
-  //     span:nth-child(2){
-  //       flex: 1;
-  //     }
-  //     span:nth-child(3){
-  //       flex: 1;
-  //     }
-  //     span:nth-child(4){
-  //       flex: 1;
-  //     }
-  //     span:nth-child(5){
-  //       flex: 1;
-  //     }
-  //     span:nth-child(6){
-  //       flex: 1;
-  //     }
-  //     span:first-child{
-  //       text-align: left;
-  //       width: 60px;
-  //     }
-  //     span:last-child{
-  //       display: block;
-  //       color: #00a0e9;
-  //       text-align: right;
-  //       width: 40px;
-  //       cursor: pointer;
-  //     }
-  //   }
-  // }
-// }
-
 </style>

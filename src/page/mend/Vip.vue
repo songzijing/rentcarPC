@@ -49,11 +49,16 @@
         <div slot="seven_cont" class="icon_del"><i class="el-icon-edit-outline"></i><i class="el-icon-delete"></i></div>
       </li>
      </List>
+     <!-- 分页器 -->
+    <Page>
+      <router-link to="/mend" slot="goback">返回</router-link> 
+    </Page>
   </div>
 </template>
 
 <script>
 import List from './component/list_slot';
+import Page from './component/page'
 
 export default {
   data() {
@@ -67,7 +72,8 @@ export default {
     }
   },
   components: {
-      List
+      List,
+      Page
   }
 }
 </script>
@@ -84,6 +90,22 @@ export default {
     font-size: 24px;
     .el-icon-edit-outline{
       margin-right: 30px;
+    }
+  }
+}
+@media all and (max-width: 1366px){
+  .order{
+    padding: 0 22px 21px 22px;
+    .manage{
+      width: 55px;
+      flex: none;
+    }
+    .icon_del{
+      width: 55px;
+      font-size: 17px;
+      .el-icon-edit-outline{
+        margin-right: 21px;
+      }
     }
   }
 }

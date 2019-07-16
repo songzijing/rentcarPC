@@ -9,7 +9,9 @@
           <li><img src="../../assets/img/total_num3.png" alt="宝马"></li>
       </ul>
       <!-- 分页器 -->
-      <Page></Page>
+    <Page>
+      <router-link to="/mend" slot="goback">返回</router-link> 
+    </Page>
   </div>
 </template>
 
@@ -45,9 +47,24 @@ export default {
             margin: 0 12px 13px 12px;
             img{
                 width: 100%;
-                height: auto;
+                height: 300px;
             }
         }
     }
+}
+@media all and (max-width: 1366px) {
+  .imgNum{
+    margin: 0 22px 21px 22px;
+    border-radius: 9px;
+    .list{
+        padding: 10px 2px 0 3px;
+        li{
+            margin: 0 8px 9px 8px;
+            img{
+                height: 210px;
+            }
+        }
+    }
+  }
 }
 </style>

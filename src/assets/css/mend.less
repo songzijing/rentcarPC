@@ -1,78 +1,3 @@
-<template>
-  <div id="app">
-    <div class="mainpage" >
-      <div class="alltop">
-        <el-row class="bg_opacity"></el-row>
-        <div class="logo_opacity"></div>
-        <el-row class="logo">
-          <router-link to="/app"><img src="./assets/common_pic/logo.png" alt="平驾租车"></router-link>
-        </el-row>
-        <el-row class="header">
-          <span class="name">平驾时分租车系统</span>
-          <div class="sea">
-            <div class="sea_input">
-              <span></span>
-              <input v-model="input" class="input">
-            </div>
-            <el-button>搜索</el-button>
-            <i class="el-icon-s-operation"></i>
-            <i class="el-icon-bell"></i>
-            <i class="el-icon-switch-button"></i>
-          </div>
-        </el-row>
-      </div>
-      <div class="allbottom">
-        <div class="aside_opacity"></div>
-        <div class="rukou">
-          <router-link to="/mend"><span></span>门店管理</router-link>
-          <router-link to="/huiy"><span></span>会员管理</router-link>
-          <router-link to="/yud"><span></span>预定管理</router-link>
-          <router-link to="/feiy"><span></span>费用管理</router-link>
-          <router-link to="/chel"><span></span>车辆管理</router-link>
-        </div>
-        <router-view class="showc"></router-view>
-      </div>
-    </div>
-    <div class="log">
-      <!-- <Login></Login> -->
-    </div>
-  </div>
-</template>
-
-<script>
-// import Login from "./page/login"
-export default {
-  name: 'App',
-   data() {
-    return {
-      input:"",
-      
-    }
-  },
-  methods: {
-    
-  },
-  mounted () {
-    this.$router.push('/mend')
-  },
-  components:{
-    // Login
-  },
-  
-}
-</script>
-
-<style lang="less">
-@import url("./assets/css/common.css");
-
-.mainpage,.log,html,body,#app{
-  width: 100%;
-  height: 100%;
-}
-body{
-  background: url("./assets/common_pic/bg.jpg") no-repeat;
-  background-size: 100% 100%;
-}
 .log {
   position: absolute;
   z-index: 99;
@@ -172,7 +97,7 @@ body{
             display: block;
             width: 33px;
             height: 33px;
-            background: url("./assets/common_pic/icon_sea.png") no-repeat;
+            background: url("../common_pic/icon_sea.png") no-repeat;
             background-size: 100% 100%;
             margin-left: 29px;
           }
@@ -235,27 +160,27 @@ body{
         }
 
         &:nth-child(1) span {
-          background: url("./assets/common_pic/aside_icon1.png") no-repeat;
+          background: url("../common_pic/aside_icon1.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(2) span {
-          background: url("./assets/common_pic/aside_icon2.png") no-repeat;
+          background: url("../common_pic/aside_icon2.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(3) span {
-          background: url("./assets/common_pic/aside_icon3.png") no-repeat;
+          background: url("../common_pic/aside_icon3.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(4) span {
-          background: url("./assets/common_pic/aside_icon4.png") no-repeat;
+          background: url("../common_pic/aside_icon4.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(5) span {
-          background: url("./assets/common_pic/aside_icon5.png") no-repeat;
+          background: url("../common_pic/aside_icon5.png") no-repeat;
           background-size: 100% 100%;
         }
       }
@@ -265,27 +190,27 @@ body{
         color: #333;
 
         &:nth-child(1) span {
-          background: url("./assets/common_pic/aside_icon_active_1.png") no-repeat;
+          background: url("../common_pic/aside_icon_active_1.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(2) span {
-          background: url("./assets/common_pic/aside_icon_active_2.png") no-repeat;
+          background: url("../common_pic/aside_icon_active_2.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(3) span {
-          background: url("./assets/common_pic/aside_icon_active_3.png") no-repeat;
+          background: url("../common_pic/aside_icon_active_3.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(4) span {
-          background: url("./assets/common_pic/aside_icon_active_4.png") no-repeat;
+          background: url("../common_pic/aside_icon_active_4.png") no-repeat;
           background-size: 100% 100%;
         }
 
         &:nth-child(5) span {
-          background: url("./assets/common_pic/aside_icon_active_5.png") no-repeat;
+          background: url("../common_pic//aside_icon_active_5.png") no-repeat;
           background-size: 100% 100%;
         }
       }
@@ -296,10 +221,3 @@ body{
     }
   }
 }
-
-// @import url("./assets/css/mend.css");
-// 公共部分的媒体查询
-// @import url("./assets/css/mend_media.css");
-
-
-</style>

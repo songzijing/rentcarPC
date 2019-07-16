@@ -49,4 +49,18 @@ export default {
         }
     }
 }
+@media all and (max-width: 1366px) {
+  .homelist{
+    padding: 0 22px 21px 22px;
+    .list{
+        border-radius: 9px;
+        h5{
+            height: 55px;
+            line-height: 55px;
+            padding: 0 21px;
+            font-size: 13px;
+        }
+    }
+  }
+}
 </style>

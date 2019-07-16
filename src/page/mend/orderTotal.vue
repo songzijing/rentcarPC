@@ -92,12 +92,17 @@
       </li>
      </List>
     <LookOver v-else></LookOver>
+    <!-- 分页器 -->
+    <Page>
+      <router-link to="/mend" slot="goback">返回</router-link> 
+    </Page>
   </div>
 </template>
 
 <script>
 import List from './component/list_slot';
 import LookOver from '../../two/mend/lookover';
+import Page from './component/page'
 
 export default {
   data() {
@@ -112,7 +117,8 @@ export default {
   },
   components: {
       List,
-      LookOver
+      LookOver,
+      Page
   }
 }
 </script>
@@ -120,5 +126,10 @@ export default {
 <style scoped lang="less">
 .order{
   padding: 0 31px 30px 31px;
+}
+@media all and (max-width: 1366px){
+  .order{
+    padding: 0 22px 21px 22px;
+  }
 }
 </style>
