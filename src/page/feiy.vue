@@ -4,7 +4,7 @@
       <div class="head" slot="feiy">
         <ul>
           <li>
-            <router-link to="/mend">结算管理</router-link>
+            <router-link to="/mend" class="router-link-active">结算管理</router-link>
           </li>
         </ul>
       </div>
@@ -224,7 +224,7 @@ export default {
 
 <style scoped lang="less">
 .box {
-  margin: 0 30px 0 30px;
+  margin: 0 21px 0 21px;
   background: #fff;
   border-radius: 10px;
   .bg-purple-light {
@@ -234,11 +234,11 @@ export default {
     p {
       font-size: 18px;
       color: #333333;
-      margin: 30px 0 10px 28px;
+      margin: 21px 0 10px 28px;
     }
     .check,
     .account {
-      margin: 0 0 0 30px;
+      margin: 0 0 0 21px;
     }
     .check {
       border-right: 1px solid #ccc;
@@ -260,7 +260,7 @@ export default {
           .li-box{
              flex:1;
              text-align: right;
-             padding-right:30px;
+             padding-right:21px;
           .el-radio {
             width: 44px;
           }
@@ -294,7 +294,7 @@ export default {
       }
       .con {
         overflow: hidden;
-        margin-top: 30px;
+        margin-top: 21px;
         span {
           float: left;
           font-size: 16px;
@@ -324,7 +324,7 @@ export default {
       }
       .bo {
         overflow: hidden;
-        margin-top:30px;
+        margin-top:21px;
         span {
           float: left;
           font-size: 16px;
@@ -360,5 +360,145 @@ export default {
       }
     }
   }
+}
+@media all and (max-width: 1366px){
+  .box {
+  margin: 0 21px 0 21px;
+  background: #fff;
+  border-radius: 7px;
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    p {
+      font-size: 12px;
+      color: #333333;
+      margin: 21px 0 7px 19px;
+    }
+    .check,
+    .account {
+      margin: 0 0 0 21px;
+    }
+    .check {
+      border-right: 1px solid #ccc;
+      ul {
+        &:last-child {
+          margin-bottom: 42px;
+        }
+
+        li {
+            display:flex ;
+            
+          font-size: 12px;
+          margin-top: 35px;
+          span {
+            // margin: 0 515px 0 15px;
+            color: #999999;
+            font-size: 12px;
+          }
+          .li-box{
+             flex:1;
+             text-align: right;
+             padding-right:21px;
+          .el-radio {
+            width: 30px;
+          }
+          .radio {
+            margin-left: 2px;
+          }
+          }
+        }
+      }
+    }
+    .account {
+      .top {
+        overflow: hidden;
+        margin-top: 29px;
+        .el-date-editor.el-input {
+          width: 154px;
+        }
+        .block {
+          float: left;
+          .el-input--prefix .el-input__inner {
+            height: 32px;
+          }
+          .demonstration {
+            margin: 0 10px;
+            font-size: 12px;
+          }
+          .ti {
+            margin-right: 32px;
+          }
+        }
+      }
+      .con {
+        overflow: hidden;
+        margin-top: 21px;
+        span {
+          float: left;
+          font-size: 12px;
+          margin: 6px 0px 0px 12px;
+        }
+        .con-s {
+          input {
+            float: left;
+            background:#fff;
+            width: 112px;
+            height: 27px;
+            border: none;
+            border-radius: 4px;
+          }
+          float: left;
+          width: 140px;
+          height: 32px;
+          border: 1px solid #dde0e7;
+          border-radius: 4px;
+          margin: 0px 0px 0px 33px;
+
+          .el-icon--right {
+            margin-left: -4px;
+            // float: left;
+          }
+        }
+      }
+      .bo {
+        overflow: hidden;
+        margin-top:21px;
+        span {
+          float: left;
+          font-size: 12px;
+          margin: 6px 0px 0px 12px;
+        }
+        .bo-s{
+          float: left;
+          overflow: hidden;
+          width: 140px;
+          height: 32px;
+          line-height: 32px;
+          border: 1px solid #dde0e7;
+          border-radius: 4px;
+          margin: 0px 0px 0px 33px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      .foot{
+        float:right;
+        button{
+          color: #fff;
+          background: #ffe009;
+          padding:7px 14px;
+          font-size:12px;
+          border-radius: 4px;
+          margin:182px 35px 0px 0px;
+        }
+        p{
+          font-size:12px;
+          margin:42px 35px 0px 0px;
+        }
+      }
+    }
+  }
+}
 }
 </style>

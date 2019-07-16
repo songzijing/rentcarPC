@@ -15,13 +15,13 @@ import Shoul from "../two/shoul"
 import Yudg from "../two/yudg"
 // 会员管理
 import Huiy from "../page/huiy.vue"
-// 费用管理
-import Feiy from "../page/feiy.vue"
 import Zhuc from "../two/zhuc"
 import Bianj from "../two/bianj"
 import Chax from "../two/chax"
 import Chongz from "../two/chongz"
 import Login from "../page/login"
+// 费用管理
+import Feiy from "../page/feiy.vue"
 
 Vue.use(Router)
 
@@ -32,10 +32,6 @@ let a = new Router({
             component: Mend,
             children:[{
                 path:"homelist",
-                name:"HomeList",
-                component:HomeList
-            },{
-                path:"",
                 name:"HomeList",
                 component:HomeList
             },{
@@ -54,7 +50,9 @@ let a = new Router({
                 path:"imgnum",
                 name:"ImgNum",
                 component:ImgNum
-            }]
+            }],
+
+            redirect:'/mend/homelist'
         },
         {
             path: '/feiy',
@@ -65,11 +63,8 @@ let a = new Router({
             path: '/huiy',
             name: 'Huiy',
             component: Huiy,
-            children: [{
-                    path: '/',
-                    name: 'Zhuc',
-                    redirect: "Zhuc"
-                }, {
+            children: [
+                 {
                     path: 'zhuc',
                     name: 'Zhuc',
                     component: Zhuc
@@ -89,7 +84,8 @@ let a = new Router({
                     name: 'Chongz',
                     component: Chongz
                 },
-            ]
+            ],
+            redirect: '/huiy/zhuc',
         },
         {
             path: '/yud',
@@ -97,11 +93,6 @@ let a = new Router({
             component: Yud,
             children: [
 
-                {
-                    path: '/',
-                    name: 'Yudg',
-                    component: Yudg
-                },
                 {
                     path: 'yudg',
                     name: 'Yudg',
@@ -112,8 +103,9 @@ let a = new Router({
                     name: 'Shoul',
                     component: Shoul
                 },
+            ],
 
-            ]
+            redirect: '/yud/yudg',
         },
         {
             path: '/chel',
