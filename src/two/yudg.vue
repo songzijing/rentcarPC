@@ -185,6 +185,15 @@ export default {
       checked10: false,
     };
   },
+  mounted(){
+        this.$axios.post('http://172.25.1.66:8080/order/findAll')
+        .then((response)=>{
+           console.log(response);
+        })
+        .catch((err)=>{
+            throw err;
+        })
+  },
   methods: {},
   components: {}
 };
@@ -374,7 +383,6 @@ export default {
           }
            span:nth-of-type(3) {
             min-width: 140px;
-           
           }
           span:nth-of-type(2) {
             width: 98px;
@@ -385,27 +393,21 @@ export default {
           height: 358px;
          
       li{
-         
           span{
            
             font-size:14px;
           }
-       
           span:nth-child(8){
             width: 84px;
-           
           }
           span:nth-child(7) {
             width: 126px;
-           
           }
           span:nth-child(6) {
             width: 182px;
-           
           }
           span:nth-child(1) {
             width: 168px;
-           
           }
           border-bottom: 1px solid #e8e8e8;
       }

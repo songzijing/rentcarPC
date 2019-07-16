@@ -399,6 +399,7 @@ export default {
       }
     }
     .account {
+      overflow: hidden;
       .top {
         min-width: 438px;
         margin-top: 29px;
