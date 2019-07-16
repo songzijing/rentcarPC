@@ -36,18 +36,39 @@ let mokuai2={
 let store=new Vuex.Store({
   state:{
     num:97,
+    // 控制下单总数 会员总数。。。显示
     listShow:true,
-    flag:false
+    // 控制登录页面显示
+    flag:false,
+    homeName:"首页"
   },
   mutations: {
     change(state,a){
       state.num=a;
     },
+    // 控制下单总数 会员总数。。。显示
     isshow(state){
       state.listShow = !state.listShow;
     },
+    // 控制登录页面显示
     isflag(state){
       state.flag = !state.flag;
+    },
+    // 改变导航首页为下单总数
+    orderName(state){
+      state.homeName = "下单总数";
+    },
+    // 改变导航首页为上传照片数量
+    imgName(state){
+      state.homeName = "上传照片数量";
+    },
+    // 改变导航首页为会员总数
+    vipName(state){
+      state.homeName = "会员总数";
+    },
+     // 改变导航首页为在线客户
+    onlineName(state){
+      state.homeName = "在线客户";
     }
   },
   getters:{

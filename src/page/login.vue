@@ -18,7 +18,6 @@
              <input type="text" placeholder="请输入密码">
             </p>
           <p>
-              <!-- <el-checkbox v-model="checked">保持登录状态</el-checkbox> -->
                <el-checkbox v-model="checked">保持登录状态</el-checkbox>
               <a href="">忘记密码？</a>
             </p>
@@ -38,9 +37,9 @@ export default {
     }
   },
   methods: {
-         fn(){
-           this.$store.commit("isflag");
-         }
+    fn(){
+      this.$store.commit("isflag");
+    }
   },
   components: {
 

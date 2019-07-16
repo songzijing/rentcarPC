@@ -1,8 +1,7 @@
 <template>
     <!-- 分页器 -->
     <div class="block">
-      <div class="goback">
-        <!-- <router-link to="/mend">返回</router-link> -->
+      <div class="goback" @click="changeName">
         <slot name="goback"></slot>
       </div>
       <el-pagination
@@ -22,7 +21,9 @@ export default {
     }
   },
   methods: {
-
+    changeName(){
+      this.$store.state.homeName = "首页";
+    }
   },
   components: {
 

@@ -364,15 +364,10 @@ export default {
 @media all and (max-width: 1366px){
   .box {
   margin: 0 21px 0 21px;
-  background: #fff;
   border-radius: 7px;
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
   .grid-content {
     p {
       font-size: 12px;
-      color: #333333;
       margin: 21px 0 7px 19px;
     }
     .check,
@@ -380,25 +375,18 @@ export default {
       margin: 0 0 0 21px;
     }
     .check {
-      border-right: 1px solid #ccc;
       ul {
         &:last-child {
           margin-bottom: 42px;
         }
 
         li {
-            display:flex ;
-            
           font-size: 12px;
           margin-top: 35px;
           span {
-            // margin: 0 515px 0 15px;
-            color: #999999;
             font-size: 12px;
           }
           .li-box{
-             flex:1;
-             text-align: right;
              padding-right:21px;
           .el-radio {
             width: 30px;
@@ -413,13 +401,12 @@ export default {
     .account {
       overflow: hidden;
       .top {
-        width:438px;
+        min-width: 438px;
         margin-top: 29px;
         .el-date-editor.el-input {
           width: 154px;
         }
         .block {
-          float: left;
           .el-input--prefix .el-input__inner {
             height: 32px;
           }
@@ -433,61 +420,43 @@ export default {
         }
       }
       .con {
-        overflow: hidden;
         margin-top: 21px;
         span {
-          float: left;
           font-size: 12px;
           margin: 6px 0px 0px 12px;
         }
         .con-s {
           input {
-            float: left;
-            background:#fff;
             width: 112px;
             height: 27px;
-            border: none;
             border-radius: 4px;
           }
-          float: left;
           width: 140px;
           height: 32px;
-          border: 1px solid #dde0e7;
           border-radius: 4px;
           margin: 0px 0px 0px 33px;
 
           .el-icon--right {
             margin-left: -4px;
-            // float: left;
           }
         }
       }
       .bo {
-        overflow: hidden;
         margin-top:21px;
         span {
-          float: left;
           font-size: 12px;
           margin: 6px 0px 0px 12px;
         }
         .bo-s{
-          float: left;
-          overflow: hidden;
           width: 140px;
           height: 32px;
           line-height: 32px;
-          border: 1px solid #dde0e7;
           border-radius: 4px;
           margin: 0px 0px 0px 33px;
-          white-space: nowrap;
-          text-overflow: ellipsis;
         }
       }
       .foot{
-        float:right;
         button{
-          color: #fff;
-          background: #ffe009;
           padding:7px 14px;
           font-size:12px;
           border-radius: 4px;

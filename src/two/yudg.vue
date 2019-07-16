@@ -394,6 +394,7 @@ export default {
          
       li{
           span{
+           
             font-size:14px;
           }
           span:nth-child(8){

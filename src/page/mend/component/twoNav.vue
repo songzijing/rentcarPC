@@ -1,7 +1,7 @@
 <template>
   <div>
       <ul class="two_nav">
-      <li>
+      <li @click="orderCli">
         <router-link to="/mend/ordertotal">
           <img src="../../../assets/img/home_icon1.png" alt="">
           <div class="info">
@@ -10,7 +10,7 @@
           </div>
         </router-link>
       </li>
-      <li>
+      <li @click="imgCli">
         <router-link to="/mend/imgnum">
           <img src="../../../assets/img/home_icon2.png" alt="">
           <div class="info">
@@ -19,7 +19,7 @@
           </div>
         </router-link>
       </li>
-      <li>
+      <li @click="vipCli">
         <router-link to="/mend/vip">
           <img src="../../../assets/img/home_icon3.png" alt="">
           <div class="info">
@@ -28,7 +28,7 @@
           </div>
         </router-link>
       </li>
-      <li>
+      <li @click="onlineCli">
         <router-link to="/mend/online">
           <img src="../../../assets/img/home_icon4.png" alt="">
           <div class="info">
@@ -49,7 +49,18 @@ export default {
     }
   },
   methods: {
-    
+    orderCli(){
+      this.$store.commit("orderName");
+    },
+    imgCli(){
+      this.$store.commit("imgName");
+    },
+    vipCli(){
+      this.$store.commit("vipName");
+    },
+    onlineCli(){
+      this.$store.commit("onlineName");
+    }
   },
   components: {
 

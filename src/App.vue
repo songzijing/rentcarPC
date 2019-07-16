@@ -17,7 +17,7 @@
             <el-button>搜索</el-button>
             <i class="el-icon-s-operation"></i>
             <i class="el-icon-bell"></i>
-            <i class="el-icon-switch-button"></i>
+            <i class="el-icon-switch-button" @click="close"></i>
           </div>
         </el-row>
       </div>
@@ -47,7 +47,9 @@ export default {
     }
   },
   methods: {
-    
+    close(){
+       this.$store.commit("isflag");
+      }
   },
   mounted () {
    
