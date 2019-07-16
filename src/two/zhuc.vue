@@ -89,4 +89,52 @@ export default {
           }
     }
  }
+
+ @media all and (max-width:1366px){
+  .zhuc{
+    margin:21px 0;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:7px;
+    div{
+      margin-top:21px;
+    }
+    p{
+      margin-bottom:7px;
+      input{
+          border:1px solid #00a0e9;
+          height:28px;
+          width:175px;
+          margin-left:17px;
+          border-radius:3px;
+          padding-left:14px;
+      }
+    }
+    .sex{
+      .nan{
+          margin-left:17px;
+      }
+      .dx{
+        font-size:13px;
+      }
+    }
+    .btn{
+          padding-bottom:126px;
+          padding-top:70px;
+          text-align:center;
+          button{
+            width:175px;
+            height:28px;
+            line-height:28px;
+            text-align:center;
+            border-radius:3px;
+            background:#ffe009;
+            color:#fff;
+            font-size:12px;
+          }
+    }
+ }
+ }
 </style>

@@ -8,25 +8,25 @@
              <div >
                <p class='bon'>
                 姓名：
-                <input type="text" name='xm' v-model='xm_'>
+                <input type="text"  v-model='xm_'>
               </p>
               <p class='hs'>
                 邮箱：
-                <input type="text" name='email'>
+                <input type="text" v-model='yx'>
               </p>
              </div>
             <div >
               <p class='bon'>
              手机号：
-             <input type="text" name='phone' value='15198095032'>
+             <input type="text"  v-model='photo'>
              </p>
            <p>
              证件号：
-             <input type="text" name="zjh" value='410211199703204025'>
+             <input type="text"  v-model='sfz'>
            </p>
             </div>
             <div>
-              <button @click='btn_'>查询</button>
+              <a @click.prevent='btn' class='sp'>查询</a>
             </div>
            </div>
          </fieldset>
@@ -35,14 +35,14 @@
            <div class='box'>
              <div>
              <p class='hs'>
-             积分：
-             <input type="text" name="jf" id="" >
+             积分
+             <input type="text" name="jf" v-model='jf'>
            </p>
            </div>
            <div>
              <p class='hs'>
              平驾币：
-             <input type="text" name="pjb" id="">
+             <input type="text" name="pjb" v-model='pjb'>
            </p>
            </div>
            <div>
@@ -92,6 +92,11 @@ export default {
   data() {
     return {
         xm_:'',
+        photo:'',
+        sfz:'',
+        jf:'',
+        pjb:'',
+        yx:'',
        list:[
          {
            "name":"周天",
@@ -100,7 +105,11 @@ export default {
            "c_model":"SUV",
            "rental":"日租",
            "done":"已完成",
-           "operate":"无"
+           "operate":"无",
+           "id":"410211199703204025",
+           "coin":20,
+           "integral":0,
+           "email":"14578408@qq.com"
          },
         {
           "name":"陈先生",
@@ -109,7 +118,11 @@ export default {
            "c_model":"ABC",
            "rental":"月租",
            "done":"未完成",
-           "operate":"有"
+           "operate":"有",
+           "id":"140421199703204025",
+           "coin":40,
+           "integral":0,
+           "email":"24236987@qq.com"
          }
        ],
        lists:"",
@@ -117,16 +130,34 @@ export default {
     }
   },
   methods: {
-      btn_(){
-          var c= this.name_;
+      btn(){
+          var c= this.xm_;
         for(let i in this.list){
-            if(this.list[i].car===c){
+            if(this.list[i].name===c){
                this.lists=this.list[i]
+               this.photo=this.lists.tel
+               this.sfz=this.lists.id
+               this.jf=this.lists.coin
+               this.pjb=this.lists.integral
+               this.yx=this.lists.email
             }else if(c===""){
-               alert("请输入车主名");
+               this.photo=""
+               this.sfz=""
+               this.jf=""
+               this.pjb=""
+               this.yx=""
+                alert("请输入车主名");
+            }else if(this.list[i].name!=c){
+               this.photo=""
+               this.sfz=""
+               this.jf=""
+               this.pjb=""
+               this.yx=""
+                alert("请输入正确的车主名");
             }
             console.log(this.lists)
         }
+
       }
   },
   components: {
@@ -149,6 +180,15 @@ export default {
       justify-content:space-between;
        .bon{
            margin-bottom:20px;
+       }
+       .sp{
+         display:inline-block;
+         width:60px;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+        background:#ffe009;
+        border-radius:5px;
        }
       p{
         height:40px;
@@ -203,5 +243,76 @@ export default {
       height:40px;
     }
     
+}
+
+@media all and (max-width:1366px){
+  .chax{
+    margin:21px 0;
+    padding:0 21px;
+    background:#fff;
+    border-radius:7px;
+      legend{
+        padding-top:14px;
+      }
+      .box{
+      display:flex;
+      justify-content:space-between;
+       .bon{
+           margin-bottom:14px;
+       }
+      p{
+        height:28px;
+        input{
+          border:1px solid #00a0e9;
+          border-radius:3px;
+          width:173px;
+          height:26px;
+          padding-left:14px;
+        }
+      }
+      button{
+        width:42px;
+        height:21px;
+        line-height:21px;
+        text-align:center;
+        background:#ffe009;
+        border-radius:3px;
+      }
+      .hs{
+        input{
+          border:1px solid #ccc;
+        }
+      }
+    }
+    
+    ul{
+      margin:0 -32px;
+      li{
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        display:flex;
+        justify-content:space-between;
+        height:42px;
+        line-height:42px;
+        span{
+          display:block;
+          width:105px;
+          text-align:center;
+        }
+        span:nth-child(1){
+          padding-left:21px;
+        }
+      }
+      .hov:hover{
+         background:rgb(235, 235, 235);
+      }
+    }
+    .num{
+      text-align:right;
+      padding-top:7px;
+      height:20px;
+    }
+    
+}
 }
 </style>

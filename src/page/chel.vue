@@ -152,4 +152,63 @@ export default {
      padding-bottom:200px;
    }
 }
+
+@media all and (max-width: 1366px){
+  .zt{
+  display:flex;
+  flex-direction:column;
+}
+.chel{
+  background:#fff;
+  border-radius:7px;
+  display:flex;
+  justify-content:center;
+  margin:0 21px 21px 21px;
+  flex-grow:0;
+  .main{
+    p{
+      margin-top:18px;
+      font-size:12px;
+      input{
+        border-radius:3px;
+         width:175px;
+         padding:7px 18px;
+         border:1px solid #ccc;
+      }
+      span:nth-child(2){
+        display:inline-block;
+        border-radius:3px;
+         width:175px;
+         height:28px;
+         line-height:28px;
+         padding-left:14px;
+         border:1px solid #ccc;
+      }
+      span:nth-child(1){
+        display:inline-block;
+        width:84px;
+        text-align:right;
+        margin-right:11px;
+      }
+    }
+  }
+   .cx{
+     padding:13px 0 21px;
+       .l{
+         border:1px solid #00a1e7;
+       }
+     button{
+       width:42px;
+       height:21px;
+      border-radius:3px;
+       text-align:center;
+       background:#ffe108;
+       margin-left:38px;
+     }
+   }
+   .info{
+     padding-bottom:140px;
+   }
+}
+}
 </style>
