@@ -411,8 +411,9 @@ export default {
       }
     }
     .account {
+      overflow: hidden;
       .top {
-        overflow: hidden;
+        width:438px;
         margin-top: 29px;
         .el-date-editor.el-input {
           width: 154px;
