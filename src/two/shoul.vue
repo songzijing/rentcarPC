@@ -151,4 +151,83 @@ export default {
   }
 
 }
+@media all and (max-width: 1366px){
+  .box {
+  height: 490px;
+  
+  border-radius: 11px;
+  margin: 14px 0px 0px 0px;
+  .box-s{
+    margin-top:7px;
+      h2{
+        height:32px;
+        line-height: 32px;
+        margin:0px 0px 0px 114px;
+        font-size:13px;
+     }
+     .tab{
+       li{
+         height:42px;
+         label{
+          
+            width:102px;
+           
+            font-size:12px;
+         }
+         input{
+           width:173px;
+           height:28px;
+           border:1px solid #00a0e9;
+           border-radius: 4px;
+           margin:0px 0px 0px 0px;
+         }
+         .gray{
+           border:1px solid #e8e8e8;
+         }
+         span{
+          
+           margin-left: 7px;
+         }
+       } 
+     }
+  }
+  .inner{
+    
+    h2{
+      height:32px;
+        line-height: 32px;
+        margin:8px 0px 8px 114px;
+        font-size:13px;
+    }
+    .info{
+        
+         width: 385px;
+         height:109px;
+        
+         img{
+             
+              width:224px;
+              height:91px;
+              padding:28px 35px 0px 26px;
+           }
+         div{
+           
+          p{
+            height:21px;
+            font-size: 12px;
+          }
+         }
+       }
+  }
+  button{
+    
+    font-size:14px;
+    padding:7px 14px;
+   
+    border-radius: 4px;
+    margin:-70px 210px 0px 0px ;
+  }
+
+}
+}
 </style>

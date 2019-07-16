@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="mainpage" >
+    <div class="mainpage" v-if="this.$store.state.flag">
       <div class="alltop">
         <el-row class="bg_opacity"></el-row>
         <div class="logo_opacity"></div>
@@ -33,30 +33,27 @@
         <router-view class="showc"></router-view>
       </div>
     </div>
-    <div class="log">
-      <!-- <Login></Login> -->
-    </div>
+    <Login v-else></Login>
   </div>
 </template>
 
 <script>
-// import Login from "./page/login"
+import Login from "./page/login"
 export default {
   name: 'App',
    data() {
     return {
       input:"",
-      
     }
   },
   methods: {
     
   },
   mounted () {
-    this.$router.push('/mend')
+   
   },
   components:{
-    // Login
+    Login
   },
   
 }
@@ -78,7 +75,7 @@ body{
   z-index: 99;
   top: 0;
   left: 0;
-  display: none;
+  display: block;
 }
 
 #app {
@@ -296,10 +293,8 @@ body{
     }
   }
 }
-
 // @import url("./assets/css/mend.css");
 // 公共部分的媒体查询
 // @import url("./assets/css/mend_media.css");
-
 
 </style>

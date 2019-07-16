@@ -36,7 +36,8 @@ let mokuai2={
 let store=new Vuex.Store({
   state:{
     num:97,
-    listShow:true
+    listShow:true,
+    flag:false
   },
   mutations: {
     change(state,a){
@@ -44,6 +45,9 @@ let store=new Vuex.Store({
     },
     isshow(state){
       state.listShow = !state.listShow;
+    },
+    isflag(state){
+      state.flag = !state.flag;
     }
   },
   getters:{

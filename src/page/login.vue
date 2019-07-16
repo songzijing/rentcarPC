@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" >
        <div class="l-left">
          <img src="./../assets/img/login_bg.png" alt="">
         </div>
@@ -18,14 +18,15 @@
              <input type="text" placeholder="请输入密码">
             </p>
           <p>
-              <el-checkbox v-model="checked">保持登录状态</el-checkbox>
+              <!-- <el-checkbox v-model="checked">保持登录状态</el-checkbox> -->
+               <el-checkbox v-model="checked">保持登录状态</el-checkbox>
               <a href="">忘记密码？</a>
             </p>
             <p>
-              <button>登录</button>
+              <button @click="fn">登录</button>
               </p>
          </form>
-       </div>
+       </div> 
   </div>
 </template>
 
@@ -33,11 +34,13 @@
 export default {
   data() {
     return {
-         checked: false
+         checked: false, 
     }
   },
   methods: {
-
+         fn(){
+           this.$store.commit("isflag");
+         }
   },
   components: {
 
@@ -100,6 +103,7 @@ export default {
             width: 543px;
             font-size:18px;
           }
+         
           button{
             width: 100%;
             color:#fff;
@@ -108,7 +112,8 @@ export default {
             height:70px;
             line-height: 70px;
             font-size:24px;
-          }
+            }
+          
           .icon{
             font-size:26px;
           }
@@ -124,5 +129,75 @@ export default {
     }
     
 
+  }
+  @media all and (max-width: 1366px){
+    .login{
+    width:100%;
+    height: 100%;
+    .l-left{
+      width: 60%;
+      height:100%;
+     
+      img{
+      width: 100%;
+      height:100%;
+     }
+    }
+    .l-right{
+      margin:0px 35px;
+      flex:1;
+      .top{
+        margin:84px 0px 0px 0px;
+        
+        img{
+          width: 98px;
+          height:98px;
+        }
+        p{
+          font-size:16px;
+         
+          margin:0px 0px 0px 0px;
+        }
+      }
+      form{
+        
+        p:nth-child(4){
+            border:none;
+            margin-top:105px;
+        }
+        p{
+          width: 420px;
+          height:48px;
+          line-height: 48px;
+          border-bottom:1px solid #e6e6e6;
+          margin-top:14px;
+         
+          input{
+            margin-left:12px;
+            height:13px;
+            width: 380px;
+            font-size:12px;
+          }
+         
+          button{
+            width: 100%;
+           
+            border-radius: 18px;
+            height:48px;
+            line-height: 48px;
+            font-size:16px;
+            }
+          
+          .icon{
+            font-size:18px;
+          }
+          
+         
+        }
+      }
+    }
+    
+
+  }
   }
 </style>
