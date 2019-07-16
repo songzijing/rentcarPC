@@ -350,7 +350,7 @@ export default {
       
       span{
            
-            font-size:18px;
+            font-size:16px;
           }
           span:nth-of-type(8){
             width: 84px;
@@ -365,7 +365,7 @@ export default {
            
           }
           span:nth-of-type(5) {
-            width: 98px;
+            min-width: 98px;
            
           }
           .name{
@@ -388,7 +388,7 @@ export default {
          
           span{
            
-            font-size:16px;
+            font-size:14px;
           }
        
           span:nth-child(8){

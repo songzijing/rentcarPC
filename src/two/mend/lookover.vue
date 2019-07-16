@@ -108,4 +108,39 @@
         }
     }
 }
+@media all and (max-width: 1366px) {
+  .look{
+    border-radius: 9px;
+    font-size: 10px;
+    -webkit-transform-origin-x: 0;
+    .back{
+        height: 49px;
+        padding: 0 23px;
+    }
+    .list{
+        width: 37%;
+        margin: 0 auto 84px auto;
+        li{
+            margin-bottom: 14px;
+            &:nth-child(5) input{
+                width: 105px;
+                height: 28px;
+            }
+        }
+        input{
+            width: 176px;
+            height: 28px;
+            border-radius: 3px;
+            text-indent: 10px;
+            &:focus{
+                border-shadow: 0 0 2px #00a0e9;
+            }
+        }
+        label{
+            width: 60px;
+            margin-right: 9px;
+        }
+    }
+  }
+}
 </style>
