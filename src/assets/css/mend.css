@@ -1,0 +1,188 @@
+.log {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#app {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#app .alltop {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  height: 99px;
+  line-height: 99px;
+  font-size: 30px;
+  position: relative;
+  display: flex;
+}
+#app .alltop .bg_opacity {
+  height: 99px;
+  width: 100%;
+  background: #eee;
+  opacity: .4;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#app .alltop .logo {
+  width: 219px;
+  min-width: 219px;
+}
+#app .alltop .logo a {
+  display: block;
+  display: flex;
+  justify-content: center;
+}
+#app .alltop .logo a img {
+  width: 90px;
+  height: 90px;
+}
+#app .alltop .logo_opacity {
+  width: 219px;
+  height: 100%;
+  background: #313131;
+  opacity: .4;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#app .alltop .header {
+  flex: 1;
+  display: flex;
+  padding: 0 28px 0 31px;
+  min-width: 1300px;
+}
+#app .alltop .header .name {
+  font-size: 24px;
+}
+#app .alltop .header .sea {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#app .alltop .header .sea .sea_input {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  background: #fff;
+  opacity: .6;
+  height: 50px;
+  border-radius: 5px 0px 0px 5px;
+}
+#app .alltop .header .sea .sea_input .input {
+  flex: 1;
+  background: none;
+  height: 50px;
+  text-indent: 10px;
+}
+#app .alltop .header .sea .sea_input span {
+  display: block;
+  width: 33px;
+  height: 33px;
+  background: url("../common_pic/icon_sea.png") no-repeat;
+  background-size: 100% 100%;
+  margin-left: 29px;
+}
+#app .alltop .header .sea .el-button {
+  border: none;
+  border-radius: 0;
+  width: 80px;
+  height: 50px;
+  color: #fff;
+  background-color: #ffe009;
+  font-size: 18px;
+  border-radius: 0 5px 5px 0;
+}
+#app .alltop .header .sea i {
+  margin-left: 30px;
+}
+#app .allbottom {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  position: relative;
+  min-width: 1300px;
+}
+#app .allbottom .aside_opacity {
+  background: #313131;
+  opacity: .4;
+  width: 219px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#app .allbottom .rukou {
+  width: 219px;
+  height: 100%;
+  font-size: 18px;
+  z-index: 9;
+  min-width: 219px;
+}
+#app .allbottom .rukou a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  height: 90px;
+}
+#app .allbottom .rukou a span {
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  margin-right: 13px;
+}
+#app .allbottom .rukou a:nth-child(1) span {
+  background: url("../common_pic/aside_icon1.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou a:nth-child(2) span {
+  background: url("../common_pic/aside_icon2.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou a:nth-child(3) span {
+  background: url("../common_pic/aside_icon3.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou a:nth-child(4) span {
+  background: url("../common_pic/aside_icon4.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou a:nth-child(5) span {
+  background: url("../common_pic/aside_icon5.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou .router-link-active {
+  background: #ffe009;
+  color: #333;
+}
+#app .allbottom .rukou .router-link-active:nth-child(1) span {
+  background: url("../common_pic/aside_icon_active_1.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou .router-link-active:nth-child(2) span {
+  background: url("../common_pic/aside_icon_active_2.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou .router-link-active:nth-child(3) span {
+  background: url("../common_pic/aside_icon_active_3.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou .router-link-active:nth-child(4) span {
+  background: url("../common_pic/aside_icon_active_4.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .rukou .router-link-active:nth-child(5) span {
+  background: url("../common_pic//aside_icon_active_5.png") no-repeat;
+  background-size: 100% 100%;
+}
+#app .allbottom .showc {
+  flex: 1;
+}

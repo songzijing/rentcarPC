@@ -11,17 +11,15 @@
       </header>
       <ul class="list">
         <slot name="cont">
-            <slot name="one_cont">豫A5421</slot>
-            <slot name="two_cont">王小虎</slot>
-            <slot name="three_cont">已完成</slot>
-            <slot name="four_cont">2019-05-21</slot>
-            <slot name="five_cont">2019-05-21</slot>
-            <slot name="six_cont">44</slot>
-            <slot name="seven_cont">查看</slot>
+            <slot name="one_cont"></slot>
+            <slot name="two_cont"></slot>
+            <slot name="three_cont"></slot>
+            <slot name="four_cont"></slot>
+            <slot name="five_cont"></slot>
+            <slot name="six_cont"></slot>
+            <slot name="seven_cont"></slot>
         </slot>
       </ul>
-      <!-- 分页器 -->
-      <Page></Page>
     </div>
 </template>
 
@@ -45,7 +43,7 @@ export default {
 <style scoped lang="less">
 .list{
   background: #fff;
-  border-radius: 13px;
+  border-radius: 13px 13px 0 0;
 }
 header {
     padding: 22px 30px;
@@ -123,4 +121,34 @@ header {
       }
     }
   }
+  @media all and (max-width: 1366px) {
+    .list{
+      border-radius: 9px 9px 0 0;
+    }
+    header {
+        padding: 15px 20px;
+        font-size: 13px;
+        span {
+          &:nth-child(1) {
+            width: 42px;
+          }
+          &:last-child {
+            width: 28px;
+          }
+        }
+      }
+      .list {
+        li {
+          padding:15px 20px;
+          font-size:10px;
+          -webkit-transform-origin-x: 0;
+          span:first-child{
+            width: 42px;
+          }
+          span:last-child{
+            width: 28px;
+          }
+        }
+      }
+    }
 </style>

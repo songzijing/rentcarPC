@@ -50,11 +50,16 @@
         <span slot="seven_cont" class="no">无</span>
       </li>
      </List>
+     <!-- 分页器 -->
+    <Page>
+      <router-link to="/mend" slot="goback">返回</router-link> 
+    </Page>
   </div>
 </template>
 
 <script>
 import List from './component/list_slot';
+import Page from './component/page'
 
 export default {
   data() {
@@ -68,7 +73,8 @@ export default {
     }
   },
   components: {
-      List
+      List,
+      Page
   }
 }
 </script>
@@ -85,6 +91,17 @@ export default {
     flex: none;
     width: 72px;
     color: #333;
+  }
+}
+@media all and (max-width: 1366px){
+  .order{
+    padding: 0 22px 21px 22px;
+    .self{
+      width: 50px;
+    }
+    .list ul>li span.no{
+      width: 50px;
+    }
   }
 }
 </style>
