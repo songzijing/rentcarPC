@@ -111,4 +111,50 @@ export default {
        }
    }
 }
+
+@media all and (max-width:1366px){
+  .cz{
+  margin:21px 0;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:7px;
+   .box{
+     .amount{
+       font-size:11px;
+        padding-top:140px;
+     }
+     input{
+          border:1px solid #ccc;
+          height:28px;
+          width:175px;
+          margin-left:17px;
+          border-radius:3px;
+          padding-left:14px;
+        }
+     .zh{
+       font-size:12px;
+       span:nth-child(2){
+          margin-left:17px;
+       }
+     }
+     .btn{
+          padding-bottom:132px;
+          padding-top:82px;
+          text-align:center;
+          button{
+            width:175px;
+            height:28px;
+            line-height:28px;
+            text-align:center;
+            border-radius:3px;
+            background:#ffe009;
+            color:#fff;
+            font-size:12px;
+          }
+       }
+   }
+}
+}
 </style>

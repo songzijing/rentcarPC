@@ -91,4 +91,27 @@ export default {
       }
     }
   }
+  @media all and (max-width: 1366px){
+    .two_nav{
+      font-size: 13px;
+      padding-bottom: 21px;
+      li{
+        margin-right: 18px;
+        padding: 17px 15px 17px 17px;
+        border-radius: 9px;
+        a{
+          img{
+            width: 70px;
+            height: 70px;
+          }
+          .info{
+            p:last-child{
+              font-size: 17px;
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>

@@ -1,0 +1,76 @@
+@media all and (max-width: 1366px) {
+  #app .alltop {
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+  }
+  #app .alltop .bg_opacity {
+    height: 70px;
+    opacity: .4;
+  }
+  #app .alltop .logo {
+    width: 153px;
+    min-width: 153px;
+  }
+  #app .alltop .logo a {
+    height: 100%;
+    align-items: center;
+  }
+  #app .alltop .logo a img {
+    width: 44px;
+    height: 44px;
+  }
+  #app .alltop .logo_opacity {
+    width: 153px;
+    height: 100%;
+  }
+  #app .alltop .header {
+    padding: 0 19px 0 22px;
+    min-width: 68px;
+  }
+  #app .alltop .header .name {
+    font-size: 17px;
+  }
+  #app .alltop .header .sea .sea_input {
+    width: 173px;
+    height: 35px;
+    border-radius: 3px 0px 0px 3px;
+  }
+  #app .alltop .header .sea .sea_input .input {
+    height: 35px;
+    text-indent: 7px;
+  }
+  #app .alltop .header .sea .sea_input span {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+  }
+  #app .alltop .header .sea .el-button {
+    width: 56px;
+    height: 35px;
+    font-size: 13px;
+    border-radius: 0 3px 3px 0;
+  }
+  #app .alltop .header .sea i {
+    margin-left: 20px;
+  }
+  #app .allbottom {
+    min-width: 68px;
+  }
+  #app .allbottom .aside_opacity {
+    width: 153px;
+  }
+  #app .allbottom .rukou {
+    width: 153px;
+    font-size: 13px;
+    min-width: 153px;
+  }
+  #app .allbottom .rukou a {
+    height: 70px;
+  }
+  #app .allbottom .rukou a span {
+    width: 19px;
+    height: 19px;
+    margin-right: 13px;
+  }
+}
