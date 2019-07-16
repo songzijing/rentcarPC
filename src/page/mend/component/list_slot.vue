@@ -143,7 +143,7 @@ header {
           font-size:10px;
           -webkit-transform-origin-x: 0;
           span:first-child{
-            width: 42px;
+            width: 49px;
           }
           span:last-child{
             width: 28px;

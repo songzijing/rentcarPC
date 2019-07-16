@@ -102,6 +102,7 @@
 }
 #app .alltop .header .sea i {
   margin-left: 30px;
+  cursor: pointer;
 }
 #app .allbottom {
   flex: 1;
