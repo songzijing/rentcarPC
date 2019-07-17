@@ -72,6 +72,7 @@ body{
   background: url("./assets/common_pic/bg.jpg") no-repeat;
   background-size: 100% 100%;
 }
+
 @import url("./assets/css/mend.css");
 // 公共部分的媒体查询
 @import url("./assets/css/mend_media.css");

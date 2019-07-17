@@ -15,6 +15,9 @@ Vue.use(ElementUI);
 import axios from "axios";
 Vue.prototype.$axios=axios;
 
+import qs from 'qs';
+Vue.prototype.$qs = qs;
+
 import Vuex from "Vuex";
 Vue.use(Vuex);
 
@@ -40,7 +43,15 @@ let store=new Vuex.Store({
     listShow:true,
     // 控制登录页面显示
     flag:false,
-    homeName:"首页"
+    // 门店导航名
+    homeName:"首页",
+    // 存储homelist数据的数组
+    homelist:[],
+    // 存储显示的4个数据
+    slicelist:[],
+    // 页的总数
+    pagetotal:0,
+    pagesize:4
   },
   mutations: {
     change(state,a){
@@ -69,6 +80,22 @@ let store=new Vuex.Store({
      // 改变导航首页为在线客户
     onlineName(state){
       state.homeName = "在线客户";
+    }
+  },
+  actions:{
+    homeAxios(context){
+      axios({
+        method:"post",
+        url:'http://hdhd.in.8866.org:30165/neworder/getneworder'
+      }).then((res)=>{
+        console.log(res);
+        context.state.homelist =  res.data.getneworder;
+        context.state.slicelist = this.state.homelist.slice(0,this.state.pagesize);
+        this.state.pagetotal = this.state.homelist.length;
+        console.log(this.state.pagetotal);
+      }).catch((err)=>{
+        throw err;
+      })
     }
   },
   getters:{
