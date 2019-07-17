@@ -3,7 +3,7 @@
     <div>
       <form>
          <p>
-           姓  名 ：<input type="text">
+           姓  名 ：<input type="text" v-model='xm'>
          </p>
          <p class='sex'>
             性  别 ：
@@ -12,14 +12,14 @@
          </p>
          <p>
            手机号:
-           <input type="text">
+           <input type="text" v-model='phone'>
          </p>
          <p>
            证件号:
-           <input type="text">
+           <input type="text" v-model='id'>
          </p>
          <p class='btn'>
-           <button>注册</button>
+           <button @click.prevent='btn'>注册</button>
          </p>
       </form>
     </div>
@@ -30,12 +30,33 @@
 export default {
   data() {
     return {
-      radio: '1'
+      radio: '1',
+      xm:'',
+      phone:'',
+      id:''
 
     }
   },
   methods: {
-
+     btn(){
+       console.log(this.xm)
+       console.log(this.phone)
+       console.log(this.id)
+       var reg = /^[\u4E00-\u9FA5]{2,10}$/;
+       var reg1=/^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+       var reg2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+        if(!reg.test(this.xm))  {
+          alert('请输入正确的姓名')
+        }else if(!reg1.test(this.phone)){
+          alert('请输入正确的手机号')
+        }else if(!reg2.test(this.id)){
+          alert('请输入正确的证件号')
+        }else{
+          alert("会员注册成功")
+        }  
+         
+       
+     }
   },
   components: {
 
