@@ -15,8 +15,12 @@ Vue.use(ElementUI);
 import axios from "axios";
 Vue.prototype.$axios=axios;
 
+import qs from "qs";
+Vue.prototype.$qs=qs;
+
 import Vuex from "Vuex";
 Vue.use(Vuex);
+
 
 Vue.config.productionTip = false;
 

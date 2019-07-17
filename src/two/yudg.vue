@@ -13,16 +13,13 @@
           <span class="name">客户姓名</span>
           <span>电话号码</span>
           <span>
-            租赁方式
+            {{font}}
             <el-dropdown>
               <span class="el-dropdown-link">
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>时租</el-dropdown-item>
-                <el-dropdown-item>日租</el-dropdown-item>
-                <el-dropdown-item>月租</el-dropdown-item>
-                <el-dropdown-item>顺风车</el-dropdown-item>
+                <el-dropdown-item  @click.native="ty(index)" v-for='(item,index) in type' :key='index'>{{item}}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </span>
@@ -35,6 +32,7 @@
         <ul>
           <li>
             <span>
+              
               <el-checkbox v-model="checked1"></el-checkbox>
               <!-- <input type="checkbox" value="1"> -->
               周一天
@@ -173,6 +171,8 @@
 export default {
   data() {
     return {
+      type:['时租','日租','月租','顺风车'],
+      font:'租赁方式',
       checked1: false,
       checked2: false,
       checked3: false,
@@ -186,7 +186,10 @@ export default {
     };
   },
   mounted(){
-        this.$axios.post('http://172.25.1.66:8080/order/findAll')
+        this.$axios.post('http://wlz.in.3322.org:30167/order/findAll',this.$qs.stringify({
+          // name:'a',
+          // password:123
+        }))
         .then((response)=>{
            console.log(response);
         })
@@ -194,7 +197,11 @@ export default {
             throw err;
         })
   },
-  methods: {},
+  methods: {
+       ty(index){
+        this.font=this.type[index];
+      }
+  },
   components: {}
 };
 </script>

@@ -11,11 +11,11 @@
          <form action="">
            <p>
              <i class="el-icon-user icon" ></i>
-             <input type="text" placeholder="请输入账号">
+             <input type="text" placeholder="请输入账号"  v-model="user">
           </p> 
           <p>
              <i class="el-icon-lock icon"></i>
-             <input type="text" placeholder="请输入密码">
+             <input type="text" placeholder="请输入密码" v-model="pass" >
             </p>
           <p>
                <el-checkbox v-model="checked">保持登录状态</el-checkbox>
@@ -34,10 +34,26 @@ export default {
   data() {
     return {
          checked: false, 
+         user:"",
+         pass:"",
     }
+  },
+  mounted(){
+        this.$axios.post(' http://wlz.in.3322.org:30167/admin/findAdmin'
+        ,this.$qs.stringify({
+          name:'aaa',
+          password:123
+        }))
+        .then((response)=>{
+           console.log(response);
+        })
+        .catch((err)=>{
+            throw err;
+        })
   },
   methods: {
     fn(){
+      
       this.$store.commit("isflag");
     }
   },
