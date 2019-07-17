@@ -9,40 +9,13 @@
       <span slot="six">订单金额（元）</span>
       <span slot="seven">管理</span>
 
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
+      <li slot="cont" v-for="(item,index) in this.$store.state.slicelist" :key="index">
+        <span slot="one_cont">{{item.license}}</span>
+        <span slot="two_cont">{{item.aname}}</span>
+        <span slot="three_cont">{{item.orderStatue}}</span>
+        <span slot="four_cont">{{item.orderstimes}}</span>
+        <span slot="five_cont">{{item.createtime}}</span>
+        <span slot="six_cont">{{item.indentmoney}}</span>
         <span slot="seven_cont" @click="show">查看</span>
       </li>
     </List>
@@ -57,7 +30,7 @@ import Page from './component/page'
 export default {
   data() {
     return {
-      
+      homelist:[]
     }
   }
 
@@ -70,6 +43,39 @@ export default {
   components: {
     List,
     Page
+  },
+  mounted(){
+    // this.$axios.get("../../../static/json/homelist.json").then((res)=>{
+    //   console.log(res);
+    //   this.homelist = res.data.getneworder;
+    // }).catch((err)=>{
+    //   throw err;
+    // });
+    // this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
+    //   console.log(res);
+    //   this.homelist = res.data.getneworder;
+    // }).catch((err)=>{
+    //   throw err;
+    // });
+    this.$store.dispatch("homeAxios");
+    // var child = document.getElementsByClassName("list")[0].getElementsByTagName("li");
+    //   for (var i = 0; i < child.length; i++) {
+    //       var a = child[i];
+    //       a.index = i;//给每个className为child的元素添加index属性;
+    //       a.onclick = function () {
+    //           console.log(this.index)
+    //       }
+// }
+    // this.homelist = this.$store.state.homelist;
+    // console.log(this.homelist);
+  },
+  filters:{
+    // changeSty(val){
+    //   if(val == "待处理"){
+    //     let lis = document.getElementById("txtSty");
+    //     lis.style.color = "red";
+    //   }
+    // }
   }
 }
 

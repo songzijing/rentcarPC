@@ -8,7 +8,8 @@
         small
         layout="prev, pager, next"
         :pageSize="4"
-        :total="20">
+        :total="this.$store.state.pagetotal"
+        @next-click="nextchange">
       </el-pagination>
     </div>
 </template>
@@ -23,6 +24,10 @@ export default {
   methods: {
     changeName(){
       this.$store.state.homeName = "首页";
+    },
+    nextchange(){
+      this.$store.state.pagesize += 4;
+      this.$store.state.slicelist.splice(0,4,this.$store.state.homelist.slice(4,8));
     }
   },
   components: {

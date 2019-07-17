@@ -38,6 +38,7 @@ export default {
     margin: 0 31px 30px 31px;
     background: #fff;
     border-radius: 13px;
+    min-width: 1209px;
     .list{
         padding: 15px 3px 0 4px;
         display: flex;
