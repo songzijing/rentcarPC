@@ -47,7 +47,8 @@
            </div>
            <div>
              <router-link to='/huiy/chongz'>
-               <button>充值</button>
+
+               <a class='sp'>充值</a>
              </router-link>
               
             </div>
@@ -71,16 +72,6 @@
                <span>{{lists.operate}}</span>
              </li>
            </ul>
-           <div class='num'>
-              <div class="block">
-                  <el-pagination
-                    :current-page.sync="currentPage3"
-                    :page-size="10"
-                    layout="prev, pager, next, jumper"
-                    :total="100">
-                  </el-pagination>
-                </div>
-           </div>
          </fieldset>
        </form>
      </div>
@@ -126,7 +117,7 @@ export default {
          }
        ],
        lists:"",
-       currentPage3: 3
+       
     }
   },
   methods: {
@@ -147,15 +138,8 @@ export default {
                this.pjb=""
                this.yx=""
                 alert("请输入车主名");
-            }else if(this.list[i].name!=c){
-               this.photo=""
-               this.sfz=""
-               this.jf=""
-               this.pjb=""
-               this.yx=""
-                alert("请输入正确的车主名");
             }
-            console.log(this.lists)
+            
         }
 
       }
@@ -200,23 +184,15 @@ export default {
           padding-left:20px;
         }
       }
-      button{
-        width:60px;
-        height:30px;
-        line-height:30px;
-        text-align:center;
-        background:#ffe009;
-        border-radius:5px;
-      }
       .hs{
         input{
           border:1px solid #ccc;
         }
       }
     }
-    
     ul{
       margin:0 -45px;
+      padding-bottom:30px;
       li{
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
@@ -237,11 +213,7 @@ export default {
          background:rgb(235, 235, 235);
       }
     }
-    .num{
-      text-align:right;
-      padding-top:10px;
-      height:40px;
-    }
+    
     
 }
 
@@ -260,6 +232,15 @@ export default {
        .bon{
            margin-bottom:14px;
        }
+       .sp{
+         display:inline-block;
+         width:42px;
+        height:21px;
+        line-height:21px;
+        text-align:center;
+        background:#ffe009;
+        border-radius:3px;
+       }
       p{
         height:28px;
         input{
@@ -270,14 +251,7 @@ export default {
           padding-left:14px;
         }
       }
-      button{
-        width:42px;
-        height:21px;
-        line-height:21px;
-        text-align:center;
-        background:#ffe009;
-        border-radius:3px;
-      }
+      
       .hs{
         input{
           border:1px solid #ccc;
@@ -287,6 +261,7 @@ export default {
     
     ul{
       margin:0 -32px;
+       padding-bottom:21px;
       li{
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
@@ -307,12 +282,7 @@ export default {
          background:rgb(235, 235, 235);
       }
     }
-    .num{
-      text-align:right;
-      padding-top:7px;
-      height:20px;
-    }
-    
+   
 }
 }
 </style>
