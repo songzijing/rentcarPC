@@ -139,15 +139,13 @@
               <div class="con">
                 <span>支付方式 :</span>
                 <div class="con-s">
-                  <input type="text" />
+                  <input type="text" :value="font" />
                   <el-dropdown>
                     <span class="el-dropdown-link">
                       <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item>微信</el-dropdown-item>
-                      <el-dropdown-item>支付宝</el-dropdown-item>
-                      <el-dropdown-item>银行卡</el-dropdown-item>
+                      <el-dropdown-item @click.native="ty(index)" v-for='(item,index) in type' :key='index'>{{item}}</el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>
                 </div>
@@ -174,6 +172,8 @@ import Test from "./../components/test";
 export default {
   data() {
     return {
+      type:['微信','支付宝','银行卡'],
+      font:"",
       car_a: "",
       car_b: "",
       car_c: "",
@@ -215,7 +215,11 @@ export default {
       value2: ""
     };
   },
-  methods: {},
+  methods: {
+      ty(index){
+        this.font=this.type[index];
+      }
+  },
   components: {
     Test
   }
@@ -253,7 +257,7 @@ export default {
           font-size: 16px;
           margin-top: 50px;
           span {
-            // margin: 0 515px 0 15px;
+           
             color: #999999;
             font-size: 14px;
           }
@@ -308,6 +312,7 @@ export default {
             height: 38px;
             border: none;
             border-radius: 5px;
+            text-indent: 2rem;
           }
           float: left;
           width: 200px;
@@ -318,7 +323,7 @@ export default {
 
           .el-icon--right {
             margin-left: -5px;
-            // float: left;
+           
           }
         }
       }
@@ -341,6 +346,7 @@ export default {
           margin: 0px 0px 0px 48px;
           white-space: nowrap;
           text-overflow: ellipsis;
+          text-indent: 2rem;
         }
       }
       .foot{
@@ -430,6 +436,7 @@ export default {
             width: 112px;
             height: 27px;
             border-radius: 4px;
+            text-indent: 1.5rem;
           }
           width: 140px;
           height: 32px;
@@ -453,6 +460,7 @@ export default {
           line-height: 32px;
           border-radius: 4px;
           margin: 0px 0px 0px 33px;
+          text-indent: 1.5rem;
         }
       }
       .foot{

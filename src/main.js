@@ -21,6 +21,7 @@ Vue.prototype.$qs = qs;
 import Vuex from "Vuex";
 Vue.use(Vuex);
 
+
 Vue.config.productionTip = false;
 
 let mokuai1={
