@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     fn(){
-      
       this.$store.commit("isflag");
     }
   },

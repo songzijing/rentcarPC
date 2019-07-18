@@ -9,92 +9,31 @@
       <span slot="six">订单金额（元）</span>
       <span slot="seven">管理</span>
 
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
-        <span slot="seven_cont" @click="show">查看</span>
-      </li>
-      <li slot="cont">
-        <span slot="one_cont">豫A5421</span>
-        <span slot="two_cont">王小虎</span>
-        <span slot="three_cont">已完成</span>
-        <span slot="four_cont">2019-05-21</span>
-        <span slot="five_cont">2019-05-21</span>
-        <span slot="six_cont">44</span>
+      <li slot="cont" v-for="(item,index) in list" :key="index">
+        <span slot="one_cont">{{item.license}}</span>
+        <span slot="two_cont">{{item.owner}}</span>
+        <span slot="three_cont">{{item.orderStatue}}</span>
+        <span slot="four_cont">{{item.orderstimes}}</span>
+        <span slot="five_cont">{{item.createtime}}</span>
+        <span slot="six_cont">{{item.indentmoney}}</span>
         <span slot="seven_cont" @click="show">查看</span>
       </li>
      </List>
     <LookOver v-else></LookOver>
-    <!-- 分页器 -->
+    <!-- 分页器、返回 -->
     <Page>
       <router-link to="/mend" slot="goback">返回</router-link> 
+      <el-pagination
+        small
+        @current-change="handleCurrentChange"
+        @next-click="NextData"
+        @prev-click="PrevData"
+        layout="prev, pager, next"
+        :current-page= "currentPage"
+        :pageSize= "pageSize"
+        :total="pageTotal"
+        slot="pagination">
+      </el-pagination>
     </Page>
   </div>
 </template>
@@ -107,13 +46,57 @@ import Page from './component/page'
 export default {
   data() {
     return {
-
+      // 一页中显示的条数
+      pageSize:8,
+      // 当前页数
+      currentPage: 1,
+      // 数据请求过来的所有数据
+      displayList:[],
+      // 渲染的数据
+      list:[],
+      // 数据总数
+      pageTotal:0
     }
   },
   methods: {
     show(){
       this.$store.commit("isshow");
+    },
+    // 当前页 改变 赋值给 currentPage
+    handleCurrentChange: function(currentPage){ 
+      this.currentPage = currentPage; 
+      console.log(this.currentPage);
+    },
+    // 下一页
+    NextData(){
+      this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+      console.log(this.list);
+    },
+    // 上一页
+    PrevData(){
+      this.list = this.displayList.slice(this.currentPage*this.pageSize,(this.currentPage-1)*this.pageSize);
+      console.log(this.list);
     }
+  },
+   watch:{
+    // 监听当前页  如果改变  调用下一页函数，为了解决页面刚进去 不显示数据
+    currentPage: function(){
+      this.NextData();
+    }
+  },
+  mounted(){
+    // 请求数据
+  this.$axios.post('http://hdhd.in.8866.org:30165/finforders/getfinforders').then((res)=>{
+     console.log(res);
+     this.displayList = res.data.finforders;
+     // 获取数据总数
+     this.pageTotal = this.displayList.length;
+     // 截取8条数据
+     this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+     console.log(this.list);
+   }).catch((err)=>{
+     throw err;
+   });
   },
   components: {
       List,

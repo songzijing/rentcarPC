@@ -4,13 +4,17 @@
       <div class="goback" @click="changeName">
         <slot name="goback"></slot>
       </div>
-      <el-pagination
+      <slot name="pagination"></slot>
+      <!-- <el-pagination
         small
+        @current-change="handleCurrentChange"
+        @next-click="NextData"
+        @prev-click="PrevData"
         layout="prev, pager, next"
-        :pageSize="4"
-        :total="this.$store.state.pagetotal"
-        @next-click="nextchange">
-      </el-pagination>
+        :current-page= "currentPage"
+        :pageSize= "pageSize"
+        :total="pageTotal">
+      </el-pagination> -->
     </div>
 </template>
 
@@ -18,21 +22,46 @@
 export default {
   data() {
     return {
-
+      
     }
   },
   methods: {
     changeName(){
       this.$store.state.homeName = "首页";
     },
-    nextchange(){
-      this.$store.state.pagesize += 4;
-      this.$store.state.slicelist.splice(0,4,this.$store.state.homelist.slice(4,8));
-    }
+    // handleCurrentChange: function(currentPage){ 
+    //   this.currentPage = currentPage; 
+    //   console.log(this.currentPage);
+    // },
+    // NextData(){
+    //   this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+    //   console.log(this.list);
+    // },
+    // PrevData(){
+    //   this.list = this.displayList.slice(this.currentPage*this.pageSize,(this.currentPage-1)*this.pageSize);
+    //   console.log(this.list);
+    // }
   },
   components: {
 
-  }
+  },
+  // watch:{
+  //    currentPage: function(){
+  //     this.NextData();
+  //     console.log("1*******");
+  //    }
+  // },
+  // mounted(){
+  //  this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
+  //     console.log(res);
+  //     this.displayList = res.data.getneworder;
+  //     this.pageTotal = this.displayList.length;
+  //     this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+  //     console.log(this.list);
+  //   }).catch((err)=>{
+  //     throw err;
+  //   });
+  // }
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="list">
+    <div class="biglist">
       <header>
         <slot name="one"></slot>
         <slot name="two"></slot>
@@ -9,7 +9,7 @@
         <slot name="six"></slot>
         <slot name="seven"></slot>
       </header>
-      <ul class="list" id="list" @click="cli($event)" >
+      <ul class="list" id="lis">
         <slot name="cont">
             <slot name="one_cont"></slot>
             <slot name="two_cont"></slot>
@@ -24,38 +24,19 @@
 </template>
 
 <script>
-import Page from "./page";
 export default {
   data() {
     return {
 
     }
   },
-  methods: {
-    cli(e){
-      
- 
-      
-      let nodelist=e.target.parentNode.parentNode.children;//当前点击元素为span,父级元素为li,再往上就是ul,其孩子是个数组集合；，
-      for(let i=0;i<nodelist.length;i++){
-              if(e.target.parentNode===nodelist[i]){//当前点击元素和孩子集合相等时，返回i,i就是下标
-                console.log(i)
-              }
-            }
-      }
-  },
-  mounted(){
-    let li = document.getElementById("list").getElementsByTagName("li").length-1;
-    console.log(li);
-  },
   components: {
-    Page
   }
 }
 </script>
 
 <style scoped lang="less">
-.list{
+.biglist{
   background: #fff;
   border-radius: 13px 13px 0 0;
 }
@@ -97,10 +78,11 @@ header {
     }
   }
    .list {
-     height: 320px;
-     overflow: hidden;
+     height: 518px;
     li {
-      padding:22px 30px;
+      padding:0 30px;
+      height: 64px;
+      line-height: 64px;
       font-size:14px;
       color:#333;
       border-bottom: 1px solid #e8e8e8;
@@ -138,7 +120,7 @@ header {
     }
   }
   @media all and (max-width: 1366px) {
-    .list{
+    .biglist{
       border-radius: 9px 9px 0 0;
     }
     header {
@@ -154,10 +136,10 @@ header {
         }
       }
       .list {
-        height: 224px;
-        overflow: hidden;
         li {
-          padding:15px 20px;
+          padding:0 20px;
+          height: 45px;
+          line-height: 45px;
           font-size:10px;
           -webkit-transform-origin-x: 0;
           span:first-child{
