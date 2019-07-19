@@ -9,7 +9,7 @@
       <span slot="six">订单金额（元）</span>
       <span slot="seven">管理</span>
 
-      <li slot="cont" v-for="(item,index) in this.$store.state.slicelist" :key="index">
+      <li slot="cont" v-for="(item,index) in list" :key="index">
         <span slot="one_cont">{{item.license}}</span>
         <span slot="two_cont">{{item.aname}}</span>
         <span slot="three_cont">{{item.orderStatue}}</span>
@@ -20,54 +20,96 @@
       </li>
     </List>
     <!-- 分页器 -->
-    <Page></Page>
+    <div class="block">
+      <el-pagination
+        small
+        @current-change="handleCurrentChange"
+        @next-click="NextData"
+        @prev-click="PrevData"
+        layout="prev, pager, next"
+        :current-page= "currentPage"
+        :pageSize= "pageSize"
+        :total="pageTotal">
+      </el-pagination>
+    </div>
   </div>
 </template>
 <script>
-import List from './component/list_slot'
-import Page from './component/page'
+import List from './component/list_slot';
 
 export default {
   data() {
     return {
-      homelist:[]
+      // 一页中显示的条数
+      pageSize:4,
+      // 当前页数
+      currentPage: 1,
+      // 数据请求过来的所有数据
+      displayList:[],
+      // 渲染的数据
+      list:[],
+      // 数据总数
+      pageTotal:0
     }
-  }
-
-  ,
-  methods: {
-    show(){
-      this.$store.commit("isshow");
-    }
-  },
-  components: {
-    List,
-    Page
   },
   mounted(){
+    // this.$store.dispatch("homeAxios");
+    // this.displayList = this.$store.state.homelist;
+    // console.log(this.displayList);
+    // this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+    // console.log(this.list);
+    // console.log(this.currentPage*this.pageSize);
+    // console.log(1);
     // this.$axios.get("../../../static/json/homelist.json").then((res)=>{
     //   console.log(res);
     //   this.homelist = res.data.getneworder;
     // }).catch((err)=>{
     //   throw err;
     // });
-    // this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
-    //   console.log(res);
-    //   this.homelist = res.data.getneworder;
-    // }).catch((err)=>{
-    //   throw err;
-    // });
-    this.$store.dispatch("homeAxios");
-    // var child = document.getElementsByClassName("list")[0].getElementsByTagName("li");
-    //   for (var i = 0; i < child.length; i++) {
-    //       var a = child[i];
-    //       a.index = i;//给每个className为child的元素添加index属性;
-    //       a.onclick = function () {
-    //           console.log(this.index)
-    //       }
-// }
-    // this.homelist = this.$store.state.homelist;
-    // console.log(this.homelist);
+
+    // 改变ul的高度 
+    document.getElementById("lis").style.height = '256px';
+
+    // 请求数据
+    this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
+      console.log(res);
+      this.displayList = res.data.getneworder;
+      // 获取数据总数
+      this.pageTotal = this.displayList.length;
+      // 截取4条数据
+      this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+    }).catch((err)=>{
+      throw err;
+    });
+  },
+  methods: {
+    show(){
+      this.$store.commit("isshow");
+    },
+    // 当前页 改变 赋值给 currentPage
+    handleCurrentChange: function(currentPage){ 
+      this.currentPage = currentPage; 
+      console.log(this.currentPage);
+    },
+    // 下一页
+    NextData(){
+      this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+      console.log(this.list);
+    },
+    // 上一页
+    PrevData(){
+      this.list = this.displayList.slice(this.currentPage*this.pageSize,(this.currentPage-1)*this.pageSize);
+      console.log(this.list);
+    }
+  },
+  components: {
+    List
+  },
+  watch:{
+    // 监听当前页  如果改变  调用下一页函数，为了解决页面刚进去 不显示数据
+     currentPage: function(){
+      this.NextData();
+     }
   },
   filters:{
     // changeSty(val){
@@ -81,4 +123,17 @@ export default {
 
 </script>
 <style scoped lang='less'>
+.block{
+    height: 90px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius:  0 0 13px 13px;
+}
+@media all and (max-width: 1366px) {
+  .block{
+    height: 63px;
+    border-radius:  0 0 9px 9px;
+  }
+}
 </style>
