@@ -20,6 +20,7 @@
             <slot name="seven_cont"></slot>
         </slot>
       </ul>
+      <slot name="page"></slot>
     </div>
 </template>
 

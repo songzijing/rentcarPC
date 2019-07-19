@@ -11,6 +11,13 @@
       <!-- 分页器 -->
     <Page>
       <router-link to="/mend" slot="goback">返回</router-link> 
+      <el-pagination
+        small
+        layout="prev, pager, next"
+        :pageSize= "6"
+        :total="6"
+        slot="pagination">
+      </el-pagination>
     </Page>
   </div>
 </template>

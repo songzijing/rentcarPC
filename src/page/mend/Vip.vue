@@ -10,11 +10,11 @@
 
       <li slot="cont" v-for="(item,index) in list" :key="index">
         <span slot="one_cont">{{item.mname}}</span>
-        <span slot="two_cont">{{item.phone}}</span>
+        <div id="editInput" slot="two_cont"><input type="text" :value = "item.phone" disabled @blur="editSty(index)"></div>
         <span slot="three_cont">{{item.card}}</span>
         <span slot="four_cont">{{item.creatcliptime}}</span>
         <span slot="five_cont">{{item.endcliptime}}</span>
-        <div slot="seven_cont" class="icon_del"><i class="el-icon-edit-outline"></i><i class="el-icon-delete"></i></div>
+        <div slot="seven_cont" class="icon_del"><i class="el-icon-edit-outline" @click="edit(index)"></i><i class="el-icon-delete" @click="del(index)"></i></div>
       </li>
      </List>
      <!-- 分页器 -->
@@ -60,8 +60,7 @@ export default {
     },
     // 当前页 改变 赋值给 currentPage
     handleCurrentChange: function(currentPage){ 
-      this.currentPage = currentPage; 
-      console.log(this.currentPage);
+      this.currentPage = currentPage;
     },
     // 下一页
     NextData(){
@@ -72,13 +71,69 @@ export default {
     PrevData(){
       this.list = this.displayList.slice(this.currentPage*this.pageSize,(this.currentPage-1)*this.pageSize);
       console.log(this.list);
+    },
+    // 编辑手机号
+    edit(index){
+      // 获取到input祖级元素li
+      let lis = document.getElementById("lis").getElementsByTagName("li");
+      // 获取input
+      let input = lis[index].getElementsByTagName("div")[0].getElementsByTagName("input")[0];
+      // 将input的disabled禁用属性删除
+      input.removeAttribute("disabled");
+      // 让input获取焦点
+      input.focus();
+      // 为input设置边框
+      input.style.border = "1px solid #00a1e7";
+    },
+    // 文本框 失去焦点时
+    editSty(index){
+      // 获取到input祖级元素li
+      let lis = document.getElementById("lis").getElementsByTagName("li");
+      // 获取input
+      let input = lis[index].getElementsByTagName("div")[0].getElementsByTagName("input")[0];
+      // 将input添加disabled禁用属性
+      input.setAttribute("disabled","disabled");
+      // 将input边框设为none
+      input.style.border = "none";
+
+      // 获取到名字对应的span
+      let span = lis[index].getElementsByTagName("span")[0].innerText;
+      //  失去焦点时，将编辑的信息返回到后台，修改后台数据
+      console.log(span.innerText);
+      this.$axios.post('http://hdhd.in.8866.org:30165/findvip/updatevip',this.$qs.stringify({
+        "mname":span
+      })).then((res)=>{
+        console.log("Successful!");
+        console.log(res);
+      }).catch((err)=>{
+        throw err;
+      })
+    },
+    del(index){
+      // 获取到input祖级元素li
+      let lis = document.getElementById("lis").getElementsByTagName("li");
+      // 获取到名字对应的span 文本
+      let span = lis[index].getElementsByTagName("span")[1].innerText;
+      //  失去焦点时，将编辑的信息返回到后台，修改后台数据
+      this.$axios.post('http://hdhd.in.8866.org:30165/findvip/deletevip',this.$qs.stringify({
+        "card":span
+      })).then((res)=>{
+        console.log("Successful!");
+        this.displayList.splice(index,1);
+        console.log(this.displayList);
+      }).catch((err)=>{
+        throw err;
+      })
     }
   },
    watch:{
     // 监听当前页  如果改变  调用下一页函数，为了解决页面刚进去 不显示数据
     currentPage: function(){
       this.NextData();
-    }
+    },
+    // updateList: function(){
+       
+    // }
   },
    mounted(){
     //  请求数据
@@ -89,10 +144,12 @@ export default {
       this.pageTotal = this.displayList.length;
       // 截取8条数据
       this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
-      console.log(this.list);
     }).catch((err)=>{
       throw err;
     });
+  },
+  updated(){
+    this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
   },
   components: {
       List,
@@ -107,6 +164,21 @@ export default {
   .manage{
     width: 78px;
     flex: none;
+  }
+  #editInput{
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input{
+      width: 60%;
+      color: #333;
+      text-align: center;
+      height: 40px;
+      line-height: 40px;
+      background: #fff;
+    }
   }
   .icon_del{
     width: 78px;
@@ -125,6 +197,12 @@ export default {
     .manage{
       width: 55px;
       flex: none;
+    }
+    #editInput{
+      input{
+        height: 28px;
+        line-height: 28px;
+      }
     }
     .icon_del{
       width: 55px;

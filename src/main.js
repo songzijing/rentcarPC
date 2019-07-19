@@ -45,7 +45,9 @@ let store=new Vuex.Store({
     // 控制登录页面显示
     flag:false,
     // 门店导航名
-    homeName:"首页"
+    homeName:"首页",
+    // 查看 相应的下标
+    carIndex:""
   },
   mutations: {
     change(state,a){
@@ -74,6 +76,10 @@ let store=new Vuex.Store({
      // 改变导航首页为在线客户
     onlineName(state){
       state.homeName = "在线客户";
+    },
+    // 门店首页  查看  获取相应的车牌号下标
+    carNum(state,index){
+      state.carIndex = index;
     }
   },
   // actions:{
