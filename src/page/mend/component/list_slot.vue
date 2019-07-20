@@ -129,7 +129,7 @@ header {
         font-size: 13px;
         span {
           &:nth-child(1) {
-            width: 42px;
+            width: 57px;
           }
           &:last-child {
             width: 28px;
@@ -137,6 +137,7 @@ header {
         }
       }
       .list {
+        height: 363px;
         li {
           padding:0 20px;
           height: 45px;
@@ -144,7 +145,7 @@ header {
           font-size:10px;
           -webkit-transform-origin-x: 0;
           span:first-child{
-            width: 46px;
+            width: 57px;
           }
           span:last-child{
             width: 28px;

@@ -12,7 +12,7 @@
       <li slot="cont" v-for="(item,index) in list" :key="index">
         <span slot="one_cont">{{item.license}}</span>
         <span slot="two_cont">{{item.owner}}</span>
-        <span slot="three_cont">{{item.orderStatue}}</span>
+        <span slot="three_cont" id="txtSty">{{item.orderStatue | changeSty(index)}}</span>
         <span slot="four_cont">{{item.orderstimes}}</span>
         <span slot="five_cont">{{item.createtime}}</span>
         <span slot="six_cont">{{item.indentmoney}}</span>
@@ -54,7 +54,12 @@ export default {
   },
   mounted(){
     // 改变ul的高度 
-    document.getElementById("lis").style.height = '256px';
+    console.log("宽："+document.body.clientWidth);
+    if(document.body.clientWidth<=1366){
+      document.getElementById("lis").style.height = '179px';
+      }else{
+      document.getElementById("lis").style.height = '256px';
+    }
 
     // 请求数据
     this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
@@ -104,11 +109,13 @@ export default {
      }
   },
   filters:{
-    // changeSty(val){
-      // if(val == "待处理"){
-      //   let lis = document.getElementById("txtSty");
-      //   lis.style.color = "red";
-      // }
+    // changeSty(val,index){
+    //   console.log(val);
+    //   if(val == "驾驶中"){
+    //     let lis = document.getElementById("lis").getElementsByTagName("li");
+    //     console.log(lis);
+    //     lis.add("txtSty");
+    //   }
     // }
   }
 }
@@ -121,6 +128,9 @@ export default {
     justify-content: flex-end;
     align-items: center;
     border-radius:  0 0 13px 13px;
+}
+.txtSty{
+  color: red;
 }
 @media all and (max-width: 1366px) {
   .block{

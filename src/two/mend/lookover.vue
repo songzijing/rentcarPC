@@ -61,7 +61,8 @@
         license:this.$store.state.carIndex
       })).then((res)=>{
         console.log(res);
-        this.lookList = res.data.sumfind;
+        this.lookList.push(res.data.sumfind[0]);
+        console.log(this.lookList);
       }).catch((err)=>{
         throw err;
       });

@@ -101,7 +101,7 @@ export default {
       font-size: 10px;
       -webkit-transform-origin-x: 0;
       border-radius: 3px;
-      line-height: 15px;
+      line-height: 21px;
       margin-left: 126px/2;
     }
   }

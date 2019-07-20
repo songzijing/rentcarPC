@@ -99,14 +99,15 @@ export default {
       // 获取到名字对应的span
       let span = lis[index].getElementsByTagName("span")[0].innerText;
       //  失去焦点时，将编辑的信息返回到后台，修改后台数据
-      console.log(span.innerText);
+      console.log(span);
       this.$axios.post('http://hdhd.in.8866.org:30165/findvip/updatevip',this.$qs.stringify({
-        "mname":span
+        "mname":span,
+        "phone":input.value
       })).then((res)=>{
         console.log("Successful!");
-        console.log(res);
       }).catch((err)=>{
         throw err;
+
       })
     },
     del(index){
@@ -118,11 +119,12 @@ export default {
       this.$axios.post('http://hdhd.in.8866.org:30165/findvip/deletevip',this.$qs.stringify({
         "card":span
       })).then((res)=>{
+        // 将请求过来的数据 赋给displayList 以便执行监听里的操作
+        this.displayList = res.data.findvip;
         console.log("Successful!");
-        this.displayList.splice(index,1);
-        console.log(this.displayList);
       }).catch((err)=>{
         throw err;
+        
       })
     }
   },
@@ -131,9 +133,14 @@ export default {
     currentPage: function(){
       this.NextData();
     },
-    // updateList: function(){
-       
-    // }
+    // 如果执行删除操作 displayList里的数据变动  在请求接口  渲染页面
+    displayList: function(){
+        this.$axios.post('http://hdhd.in.8866.org:30165/findvip/getfindvip').then((res)=>{
+          this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
+        }).catch((err)=>{
+          throw err;
+        });
+      }
   },
    mounted(){
     //  请求数据
@@ -147,9 +154,6 @@ export default {
     }).catch((err)=>{
       throw err;
     });
-  },
-  updated(){
-    this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
   },
   components: {
       List,
