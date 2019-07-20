@@ -48,15 +48,8 @@ let store=new Vuex.Store({
     orderNO:'',
     // 门店导航名
     homeName:"首页",
-    // 存储homelist数据的数组
-    homelist:[],
-    // 存储显示的4个数据
-    slicelist:[],
-    // 页的总数
-    pagetotal:0,
-    pagesize:4,
-    //登录
-    // checked:false
+    // 查看 相应的下标
+    carIndex:""
   },
   mutations: {
     
@@ -91,24 +84,30 @@ let store=new Vuex.Store({
     onlineName(state){
       state.homeName = "在线客户";
     },
-    
-  },
-  actions:{
-    homeAxios(context){
-      axios({
-        method:"post",
-        url:'http://hdhd.in.8866.org:30165/neworder/getneworder'
-      }).then((res)=>{
-        console.log(res);
-        context.state.homelist =  res.data.getneworder;
-        context.state.slicelist = this.state.homelist.slice(0,this.state.pagesize);
-        this.state.pagetotal = this.state.homelist.length;
-        console.log(this.state.pagetotal);
-      }).catch((err)=>{
-        throw err;
-      })
+    // 门店首页  查看  获取相应的车牌号下标
+    carNum(state,index){
+      state.carIndex = index;
     }
   },
+  // actions:{
+  //   // 门店首页的数据请求
+  //   homeAxios(context){
+  //     axios({
+  //       method:"post",
+  //       url:'http://hdhd.in.8866.org:30165/neworder/getneworder'
+  //     }).then((res)=>{
+  //       this.state.pagesize += 4;
+  //       console.log(res);
+  //       // 将请求过来的数据赋给 homelist数组
+  //       context.state.homelist =  res.data.getneworder;
+  //       // 分页器的总数据数
+  //       this.state.pagetotal = this.state.homelist.length;
+  //       console.log(this.state.pagetotal);
+  //     }).catch((err)=>{
+  //       throw err;
+  //     })
+  //   }
+  // },
   getters:{
     numa(state){
       let a=parseInt(state.num)+1
