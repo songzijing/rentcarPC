@@ -1,26 +1,26 @@
 <template>
   <div>
-    <div class="box">
-    <div class="box-s">
+    <div class="box" >
+    <div class="box-s"  >
       <h2>用户信息</h2>
-      <el-row>
-        <el-col :span="12" style="text-align:center">
+      <el-row >
+        <el-col :span="12" style="text-align:center" >
           <div class="grid-content bg-purple">
             <ul class="tab">
-              <li><label for="">姓名：</label><input type="text"><span>*</span></li>
-              <li><label for="">邮箱：</label><input type="text" class="gray"></li>
-              <li><label for="">积分：</label><input type="text" class="gray"></li>
-              <li><label for="">紧急联系人：</label><input type="text"><span>*</span></li>
+              <li><label for="">姓名： </label><input type="text" v-model="secont.userName"><span>*</span></li>
+              <li><label for="">邮箱：</label><input type="text" class="gray" v-model="secont.email"></li>
+              <li><label for="">积分：</label><input type="text" class="gray" v-model="secont.integral"></li>
+              <li><label for="">紧急联系人：</label><input type="text" v-model="secont.contact"><span>*</span></li>
             </ul>
           </div>
         </el-col>
-        <el-col :span="12">
+        <el-col :span="12" >
           <div class="grid-content bg-purple-light">
-             <ul class="tab">
-              <li><label for="">手机号：</label><input type="text"><span>*</span></li>
-              <li><label for="">证件号：</label><input type="text"><span>*</span></li>
-              <li><label for="">平价币：</label><input type="text" class="gray"></li>
-              <li><label for="">紧急联系人号码：</label><input type="text"><span>*</span></li>
+             <ul class="tab" >
+              <li><label for="">手机号：</label><input type="text" v-model="secont.phone" ><span>*</span></li>
+              <li><label for="">证件号：</label><input type="text" v-model="secont.identity"><span>*</span></li>
+              <li><label for="">平价币：</label><input type="text" class="gray" v-model="secont.pjmoney"></li>
+              <li><label for="">紧急联系人号码：</label><input type="text" v-model="secont.emergency"><span>*</span></li>
             </ul>
           </div>
         </el-col>
@@ -30,15 +30,15 @@
         <el-col :span="12" style="text-align:center">
           <div class="grid-content bg-purple">
             <ul class="tab">
-              <li><label for="">定金：</label><input type="text"><span>*</span></li>
-              <li><label for="">还车时间：</label><input type="text"><span>*</span></li>
+              <li><label for="">定金：</label><input type="text" v-model="secont.rentMoney" ><span>*</span></li>
+              <li><label for="">还车时间：</label><input type="text" v-model="secont.returnTime"><span>*</span></li>
             </ul>
           </div>
         </el-col>
         <el-col :span="12">
           <div class="grid-content bg-purple-light">
              <ul class="tab">
-              <li><label for="">取车时间：</label><input type="text"><span>*</span></li> 
+              <li><label for="">取车时间：</label><input type="text" v-model="secont.collectionTime"><span>*</span></li> 
             </ul>
           </div>
         </el-col>
@@ -49,13 +49,12 @@
       <div class="info">
        <img src="./../assets/img/acceptance_1.png" alt="">
         <div>
-          <p>宝马3系</p>
-          <p>车牌号：豫A8888</p>
-          <p>3厢 2.0自动 乘坐5人</p>
-          <p>日租价：599</p> 
+          <p>{{secont.brand}}</p>
+          <p>车牌号：{{secont.license}}</p>
+          <p>{{secont.type}} {{secont.driveType}}  乘坐{{secont.seat}}人</p>
+          <p>日租价：{{secont.rentMoney}}</p> 
         </div>
       </div>
-      <button>提交</button>
     </div>
     </div>
   </div>
@@ -64,7 +63,21 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      secont:[]
+    };
+  },
+  mounted(){
+     this.$axios.post('http://wlz.in.8866.org:30167/order/findOrderNo',this.$qs.stringify({
+          orderNo:this.$store.state.orderNO
+        }))
+        .then((res)=>{
+           this.secont=res.data;
+           console.log(this.secont);
+        })
+        .catch((err)=>{
+            throw err;
+        })
   },
   methods: {},
   components: {}
@@ -100,6 +113,7 @@ export default {
            border:1px solid #00a0e9;
            border-radius: 5px;
            margin:0px 0px 0px 0px;
+           text-indent: .6rem;
          }
          .gray{
            border:1px solid #e8e8e8;
@@ -180,6 +194,7 @@ export default {
            border:1px solid #00a0e9;
            border-radius: 4px;
            margin:0px 0px 0px 0px;
+           text-indent: .4rem;
          }
          .gray{
            border:1px solid #e8e8e8;

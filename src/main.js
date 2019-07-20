@@ -38,12 +38,14 @@ let mokuai2={
 }
 /* eslint-disable no-new */
 let store=new Vuex.Store({
-  state:{
+  state:{ 
     num:97,
     // 控制下单总数 会员总数。。。显示
     listShow:true,
     // 控制登录页面显示
     flag:false,
+    //预订管理点击的当前订单号
+    orderNO:'',
     // 门店导航名
     homeName:"首页",
     // 存储homelist数据的数组
@@ -52,9 +54,16 @@ let store=new Vuex.Store({
     slicelist:[],
     // 页的总数
     pagetotal:0,
-    pagesize:4
+    pagesize:4,
+    //登录
+    // checked:false
   },
   mutations: {
+    
+    //接收预订管理的当前订单号
+    order(state,o){
+        state.orderNO=o;
+    },
     change(state,a){
       state.num=a;
     },
@@ -81,7 +90,8 @@ let store=new Vuex.Store({
      // 改变导航首页为在线客户
     onlineName(state){
       state.homeName = "在线客户";
-    }
+    },
+    
   },
   actions:{
     homeAxios(context){
@@ -117,4 +127,6 @@ new Vue({
   components: { App },
   template: '<App/>',
   store,
+  
 })
+

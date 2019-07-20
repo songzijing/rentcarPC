@@ -53,7 +53,7 @@ import Test from './../components/test';
 export default {
   data() {
     return {
-      car_:'',
+    car_:'',
   list:[
          {
            "car":"豫A6666",
