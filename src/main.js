@@ -38,18 +38,25 @@ let mokuai2={
 }
 /* eslint-disable no-new */
 let store=new Vuex.Store({
-  state:{
+  state:{ 
     num:97,
     // 控制下单总数 会员总数。。。显示
     listShow:true,
     // 控制登录页面显示
     flag:false,
+    //预订管理点击的当前订单号
+    orderNO:'',
     // 门店导航名
     homeName:"首页",
     // 查看 相应的下标
     carIndex:""
   },
   mutations: {
+    
+    //接收预订管理的当前订单号
+    order(state,o){
+        state.orderNO=o;
+    },
     change(state,a){
       state.num=a;
     },
@@ -119,4 +126,6 @@ new Vue({
   components: { App },
   template: '<App/>',
   store,
+  
 })
+

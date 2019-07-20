@@ -155,8 +155,8 @@
                 <p class="bo-s" contenteditable="true"></p>
               </div>
               <div class="foot">
-                <button>完成</button>
-                <p>第一页，共1页</p>
+                <button @click="finish">完成</button>
+                
                 </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default {
     return {
       type:['微信','支付宝','银行卡'],
       font:"",
-      car_a: "",
+      car_a: "1-1",
       car_b: "",
       car_c: "",
       car_d: "",
@@ -218,6 +218,9 @@ export default {
   methods: {
       ty(index){
         this.font=this.type[index];
+      },
+      finish(){
+        alert('结算完成');
       }
   },
   components: {
