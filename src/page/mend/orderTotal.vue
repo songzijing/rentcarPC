@@ -16,7 +16,7 @@
         <span slot="four_cont">{{item.orderstimes}}</span>
         <span slot="five_cont">{{item.createtime}}</span>
         <span slot="six_cont">{{item.indentmoney}}</span>
-        <span slot="seven_cont" @click="show">查看</span>
+        <span slot="seven_cont" @click="show(index)">查看</span>
       </li>
       <!-- 分页器、返回 -->
       <Page slot="page">
@@ -61,9 +61,17 @@ export default {
     }
   },
   methods: {
-    show(){
+    show(index){
       this.$store.state.homeName = "查看";
       this.$store.commit("isshow");
+
+       // 获取到车牌
+      let lis = document.getElementById("lis").getElementsByTagName("li");
+      let span = lis[index].getElementsByTagName("span")[0];
+      let carTxt = span.innerText;
+      console.log(carTxt);
+      // 状态管理
+      this.$store.commit("carNum",carTxt);
     },
     // 当前页 改变 赋值给 currentPage
     handleCurrentChange: function(currentPage){ 

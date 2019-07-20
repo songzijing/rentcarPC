@@ -69,6 +69,7 @@ export default {
   height: 100%;
 }
 body{
+  min-width: 800px;
   background: url("./assets/common_pic/bg.jpg") no-repeat;
   background-size: 100% 100%;
 }
