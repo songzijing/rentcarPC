@@ -18,23 +18,25 @@
         <span slot="six_cont">{{item.indentmoney}}</span>
         <span slot="seven_cont" @click="show">查看</span>
       </li>
+      <!-- 分页器、返回 -->
+      <Page slot="page">
+        <router-link to="/mend" slot="goback">返回</router-link> 
+        <el-pagination
+          small
+          @current-change="handleCurrentChange"
+          @next-click="NextData"
+          @prev-click="PrevData"
+          layout="prev, pager, next"
+          :current-page= "currentPage"
+          :pageSize= "pageSize"
+          :total="pageTotal"
+          slot="pagination">
+        </el-pagination>
+      </Page>
      </List>
-    <LookOver v-else></LookOver>
-    <!-- 分页器、返回 -->
-    <Page>
-      <router-link to="/mend" slot="goback">返回</router-link> 
-      <el-pagination
-        small
-        @current-change="handleCurrentChange"
-        @next-click="NextData"
-        @prev-click="PrevData"
-        layout="prev, pager, next"
-        :current-page= "currentPage"
-        :pageSize= "pageSize"
-        :total="pageTotal"
-        slot="pagination">
-      </el-pagination>
-    </Page>
+     <LookOver v-else></LookOver>
+    
+    
   </div>
 </template>
 
@@ -60,6 +62,7 @@ export default {
   },
   methods: {
     show(){
+      this.$store.state.homeName = "查看";
       this.$store.commit("isshow");
     },
     // 当前页 改变 赋值给 currentPage
@@ -93,10 +96,9 @@ export default {
      this.pageTotal = this.displayList.length;
      // 截取8条数据
      this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
-     console.log(this.list);
    }).catch((err)=>{
      throw err;
-   });
+   x});
   },
   components: {
       List,

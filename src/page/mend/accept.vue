@@ -11,12 +11,12 @@
 
       <li slot="cont" v-for="(item,index) in list" :key="index">
         <span slot="one_cont">{{item.license}}</span>
-        <span slot="two_cont">{{item.aname}}</span>
+        <span slot="two_cont">{{item.owner}}</span>
         <span slot="three_cont">{{item.orderStatue}}</span>
         <span slot="four_cont">{{item.orderstimes}}</span>
         <span slot="five_cont">{{item.createtime}}</span>
         <span slot="six_cont">{{item.indentmoney}}</span>
-        <span slot="seven_cont" @click="show">查看</span>
+        <span slot="seven_cont" @click="show(index)">查看</span>
       </li>
     </List>
     <!-- 分页器 -->
@@ -49,30 +49,15 @@ export default {
       // 渲染的数据
       list:[],
       // 数据总数
-      pageTotal:0
+      pageTotal:0,
     }
   },
   mounted(){
-    // this.$store.dispatch("homeAxios");
-    // this.displayList = this.$store.state.homelist;
-    // console.log(this.displayList);
-    // this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
-    // console.log(this.list);
-    // console.log(this.currentPage*this.pageSize);
-    // console.log(1);
-    // this.$axios.get("../../../static/json/homelist.json").then((res)=>{
-    //   console.log(res);
-    //   this.homelist = res.data.getneworder;
-    // }).catch((err)=>{
-    //   throw err;
-    // });
-
     // 改变ul的高度 
     document.getElementById("lis").style.height = '256px';
 
     // 请求数据
     this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
-      console.log(res);
       this.displayList = res.data.getneworder;
       // 获取数据总数
       this.pageTotal = this.displayList.length;
@@ -83,23 +68,30 @@ export default {
     });
   },
   methods: {
-    show(){
+    show(index){
+      // 点击查看 的时候  将首页导航名 变为 查看
+      this.$store.state.homeName = "查看";
+      // 控制 查看 页面的显示隐藏
       this.$store.commit("isshow");
+      // 获取到车牌
+      let lis = document.getElementById("lis").getElementsByTagName("li");
+      let span = lis[index].getElementsByTagName("span")[0];
+      let carTxt = span.innerText;
+      console.log(carTxt);
+      // 状态管理
+      this.$store.commit("carNum",carTxt);
     },
     // 当前页 改变 赋值给 currentPage
     handleCurrentChange: function(currentPage){ 
       this.currentPage = currentPage; 
-      console.log(this.currentPage);
     },
     // 下一页
     NextData(){
       this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
-      console.log(this.list);
     },
     // 上一页
     PrevData(){
       this.list = this.displayList.slice(this.currentPage*this.pageSize,(this.currentPage-1)*this.pageSize);
-      console.log(this.list);
     }
   },
   components: {
@@ -113,10 +105,10 @@ export default {
   },
   filters:{
     // changeSty(val){
-    //   if(val == "待处理"){
-    //     let lis = document.getElementById("txtSty");
-    //     lis.style.color = "red";
-    //   }
+      // if(val == "待处理"){
+      //   let lis = document.getElementById("txtSty");
+      //   lis.style.color = "red";
+      // }
     // }
   }
 }

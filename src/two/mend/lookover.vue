@@ -4,38 +4,38 @@
         <img src="../../assets/img/back.png">
     </div>
     <!-- 查看信息列表 -->
-    <ul class="list">
+    <ul class="list" v-for="(item,index) in lookList" :key="index">
       <li>
         <label for="userName">客户名称：</label>
-        <input type="text" id="userName">
+        <input type="text" id="userName" :value="item.owner">
       </li>
       <li>
         <label for="carNum">车牌号：</label>
-        <input type="text" id="carNum">
+        <input type="text" id="carNum" :value="item.license">
       </li>
       <li>
         <label for="phoneNum">手机号：</label>
-        <input type="text" id="phoneNum">
+        <input type="text" id="phoneNum" :value="item.phone">
       </li>
       <li>
         <label for="cardNum">证件号：</label>
-        <input type="text" id="cardNum">
+        <input type="text" id="cardNum" :value="item.identity">
       </li>
       <li>
         <label >下单时间：</label>
-        <input type="text"> ——— <input type="text">
+        <input type="text" :value="item.orderstimes"> ——— <input type="text" :value="item.createtime">
       </li>
       <li>
         <label for="payment">支付金额：</label>
-        <input type="text" id="payment">
+        <input type="text" id="payment" :value="item.indentmoney">
       </li>
       <li>
         <label for="orderState">订单状况：</label>
-        <input type="text" id="orderState">
+        <input type="text" id="orderState" :value="item.orderStatue">
       </li>
       <li>
         <label for="shop">门店：</label>
-        <input type="text" id="shop">
+        <input type="text" id="shop" :value="item.returnStore">
       </li>
     </ul>
   </div>
@@ -46,16 +46,25 @@
   export default {
     data() {
       return {
-        
+        lookList:[]
       }
     },
     methods: {
+      // 控制显示隐藏
         show(){
             this.$store.commit("isshow");
         }
     },
-    components: {
-      
+    mounted(){
+       // 请求数据
+      this.$axios.post('http://hdhd.in.8866.org:30165/sumfind/getsumfind',this.$qs.stringify({
+        license:this.$store.state.carIndex
+      })).then((res)=>{
+        console.log(res);
+        this.lookList = res.data.sumfind;
+      }).catch((err)=>{
+        throw err;
+      });
     }
   }
 
