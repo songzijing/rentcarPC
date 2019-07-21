@@ -38,23 +38,25 @@ let mokuai2={
 }
 /* eslint-disable no-new */
 let store=new Vuex.Store({
-  state:{
+  state:{ 
     num:97,
     // 控制下单总数 会员总数。。。显示
     listShow:true,
     // 控制登录页面显示
     flag:false,
+    //预订管理点击的当前订单号
+    orderNO:'',
     // 门店导航名
     homeName:"首页",
-    // 存储homelist数据的数组
-    homelist:[],
-    // 存储显示的4个数据
-    slicelist:[],
-    // 页的总数
-    pagetotal:0,
-    pagesize:4
+    // 查看 相应的下标
+    carIndex:""
   },
   mutations: {
+    
+    //接收预订管理的当前订单号
+    order(state,o){
+        state.orderNO=o;
+    },
     change(state,a){
       state.num=a;
     },
@@ -81,24 +83,31 @@ let store=new Vuex.Store({
      // 改变导航首页为在线客户
     onlineName(state){
       state.homeName = "在线客户";
+    },
+    // 门店首页  查看  获取相应的车牌号下标
+    carNum(state,index){
+      state.carIndex = index;
     }
   },
-  actions:{
-    homeAxios(context){
-      axios({
-        method:"post",
-        url:'http://hdhd.in.8866.org:30165/neworder/getneworder'
-      }).then((res)=>{
-        console.log(res);
-        context.state.homelist =  res.data.getneworder;
-        context.state.slicelist = this.state.homelist.slice(0,this.state.pagesize);
-        this.state.pagetotal = this.state.homelist.length;
-        console.log(this.state.pagetotal);
-      }).catch((err)=>{
-        throw err;
-      })
-    }
-  },
+  // actions:{
+  //   // 门店首页的数据请求
+  //   homeAxios(context){
+  //     axios({
+  //       method:"post",
+  //       url:'http://hdhd.in.8866.org:30165/neworder/getneworder'
+  //     }).then((res)=>{
+  //       this.state.pagesize += 4;
+  //       console.log(res);
+  //       // 将请求过来的数据赋给 homelist数组
+  //       context.state.homelist =  res.data.getneworder;
+  //       // 分页器的总数据数
+  //       this.state.pagetotal = this.state.homelist.length;
+  //       console.log(this.state.pagetotal);
+  //     }).catch((err)=>{
+  //       throw err;
+  //     })
+  //   }
+  // },
   getters:{
     numa(state){
       let a=parseInt(state.num)+1
@@ -117,4 +126,6 @@ new Vue({
   components: { App },
   template: '<App/>',
   store,
+  
 })
+

@@ -6,7 +6,7 @@
           <img src="../../../assets/img/home_icon1.png" alt="">
           <div class="info">
             <p>下单总数</p>
-            <p>567</p>
+            <p>{{orderLen}}</p>
           </div>
         </router-link>
       </li>
@@ -15,7 +15,7 @@
           <img src="../../../assets/img/home_icon2.png" alt="">
           <div class="info">
             <p>上传照片数量</p>
-            <p>666</p>
+            <p>{{orderLen}}</p>
           </div>
         </router-link>
       </li>
@@ -24,7 +24,7 @@
           <img src="../../../assets/img/home_icon3.png" alt="">
           <div class="info">
             <p>会员总数</p>
-            <p>88</p>
+            <p>{{vipLen}}</p>
           </div>
         </router-link>
       </li>
@@ -33,7 +33,7 @@
           <img src="../../../assets/img/home_icon4.png" alt="">
           <div class="info">
             <p>在线客户</p>
-            <p>30</p>
+            <p>{{onlineLen}}</p>
           </div>
         </router-link>
       </li>
@@ -45,7 +45,9 @@
 export default {
   data() {
     return {
-
+      orderLen:0,
+      vipLen:0,
+      onlineLen:0
     }
   },
   methods: {
@@ -62,8 +64,25 @@ export default {
       this.$store.commit("onlineName");
     }
   },
-  components: {
+  mounted() {
+    // 下单总数数据长度
+    this.$axios.post('http://hdhd.in.8866.org:30165/orderid/getorderid').then((res)=>{
+      this.orderLen = res.data.orderscount;
+    }).catch((err)=>{
+      throw err;
+    });
 
+  this.$axios.post('http://hdhd.in.8866.org:30165/order/getorder').then((res)=>{
+      this.vipLen = res.data.vipcount;
+    }).catch((err)=>{
+      throw err;
+    });
+
+    this.$axios.post('http://hdhd.in.8866.org:30165/onclient/getonclient').then((res)=>{
+      this.onlineLen = res.data.onclient.length;
+    }).catch((err)=>{
+      throw err;
+    });
   }
 }
 </script>
