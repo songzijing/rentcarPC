@@ -51,7 +51,9 @@ export default {
       // 渲染的数据
       list:[],
       // 数据总数
-      pageTotal:0
+      pageTotal:0,
+      // 数据加载慢时 显示正在加载
+      accShow:this.$store.state.acceptShow
     }
   },
   methods: {
@@ -100,7 +102,7 @@ export default {
       let span = lis[index].getElementsByTagName("span")[0].innerText;
       //  失去焦点时，将编辑的信息返回到后台，修改后台数据
       console.log(span);
-      this.$axios.post('http://hdhd.in.8866.org:30165/findvip/updatevip',this.$qs.stringify({
+      this.$axios.post('http://wlz.in.8866.org:30167/findvip/updatevip',this.$qs.stringify({
         "mname":span,
         "phone":input.value
       })).then((res)=>{
@@ -116,7 +118,7 @@ export default {
       // 获取到名字对应的span 文本
       let span = lis[index].getElementsByTagName("span")[1].innerText;
       //  失去焦点时，将编辑的信息返回到后台，修改后台数据
-      this.$axios.post('http://hdhd.in.8866.org:30165/findvip/deletevip',this.$qs.stringify({
+      this.$axios.post('http://wlz.in.8866.org:30167/findvip/deletevip',this.$qs.stringify({
         "card":span
       })).then((res)=>{
         // 将请求过来的数据 赋给displayList 以便执行监听里的操作
@@ -135,7 +137,7 @@ export default {
     },
     // 如果执行删除操作 displayList里的数据变动  在请求接口  渲染页面
     displayList: function(){
-        this.$axios.post('http://hdhd.in.8866.org:30165/findvip/getfindvip').then((res)=>{
+        this.$axios.post('http://wlz.in.8866.org:30167/findvip/getfindvip').then((res)=>{
           this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
         }).catch((err)=>{
           throw err;
@@ -144,7 +146,7 @@ export default {
   },
    mounted(){
     //  请求数据
-   this.$axios.post('http://hdhd.in.8866.org:30165/findvip/getfindvip').then((res)=>{
+   this.$axios.post('http://wlz.in.8866.org:30167/findvip/getfindvip').then((res)=>{
       console.log(res);
       this.displayList = res.data.findvip;
       // 获取数据
@@ -153,6 +155,11 @@ export default {
       this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
     }).catch((err)=>{
       throw err;
+    });
+
+    this.$axios.interceptors.request.use((res)=>{
+      this.accShow = false;
+      return res;
     });
   },
   components: {

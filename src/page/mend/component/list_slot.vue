@@ -1,5 +1,6 @@
 <template>
     <div class="biglist">
+      
       <header>
         <slot name="one"></slot>
         <slot name="two"></slot>
@@ -10,7 +11,7 @@
         <slot name="seven"></slot>
       </header>
       <ul class="list" id="lis">
-        <slot name="cont">
+        <slot name="cont" v-if="this.$store.state.acceptShow">
             <slot name="one_cont"></slot>
             <slot name="two_cont"></slot>
             <slot name="three_cont"></slot>
@@ -19,6 +20,9 @@
             <slot name="six_cont"></slot>
             <slot name="seven_cont"></slot>
         </slot>
+        <div class="load" v-else>
+          <i class="el-icon-loading"></i>正在加载中……
+        </div>
       </ul>
       <slot name="page"></slot>
     </div>
@@ -80,6 +84,17 @@ header {
   }
    .list {
      height: 518px;
+     .load{
+       font-size: 18px;
+       color: #888;
+       height: 60px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       i{
+         margin-right: 3px;
+       }
+     }
     li {
       padding:0 30px;
       height: 64px;

@@ -41,10 +41,11 @@ export default {
       user: "",
       pass: "",
       list: [],
-      sta:''
+    
     };
   },
   beforeMount(){
+
     let str= JSON.parse(localStorage.getItem('checked_'));
     this.checked=str;
     this.user=localStorage.getItem('userName_');
@@ -64,13 +65,16 @@ export default {
         console.log(this.list); 
       })
       .catch(err => {
-        throw err;
+        // throw err;
+         this.$store.commit("isflag"); 
       });   
   },
   methods: {
     keep(){
-       if(!this.checked){
+          console.log(0);
+       if(!this.checked){  
           localStorage.setItem('userName_',this.user);
+          console.log(localStorage.getItem('userName_'));
           localStorage.setItem('passWord_',this.pass);
           localStorage.setItem('checked_',!this.checked); 
        }
