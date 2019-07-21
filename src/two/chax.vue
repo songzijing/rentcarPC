@@ -18,7 +18,7 @@
             <div >
               <p class='bon'>
              手机号：
-             <input type="text"  v-model='photo'>
+             <input type="text"  v-model='phone'>
              </p>
            <p>
              证件号：
@@ -64,12 +64,12 @@
                <span>处理状态</span>
                <span>操作</span>
              </li>
-             <li class='hov'>
-               <span>{{lists.g_time}}</span>
-               <span>{{lists.c_model}}</span>
-               <span>{{lists.rental}}</span>
-               <span>{{lists.done}}</span>
-               <span>{{lists.operate}}</span>
+             <li class='hov' v-for='(item,index) in lists' :key='index'>
+               <span>{{item.returntime}}</span>
+               <span>{{item.quality}}</span>
+               <span>{{item.rentStyle}}</span>
+               <span>{{item.orderStatue}}</span>
+               <span>{{item.operation}}</span>
              </li>
            </ul>
          </fieldset>
@@ -83,69 +83,43 @@ export default {
   data() {
     return {
         xm_:'',
-        photo:'',
+        phone:'',
         sfz:'',
         jf:'',
         pjb:'',
         yx:'',
-       list:[
-         {
-           "name":"周天",
-           "tel":"13935567894",
-           "g_time":"2018-12-07",
-           "c_model":"SUV",
-           "rental":"日租",
-           "done":"已完成",
-           "operate":"无",
-           "id":"410211199703204025",
-           "coin":20,
-           "integral":0,
-           "email":"14578408@qq.com"
-         },
-        {
-          "name":"陈先生",
-           "tel":"13935567894",
-           "g_time":"2018-8-07",
-           "c_model":"ABC",
-           "rental":"月租",
-           "done":"未完成",
-           "operate":"有",
-           "id":"140421199703204025",
-           "coin":40,
-           "integral":0,
-           "email":"24236987@qq.com"
-         }
-       ],
-       lists:"",
-       
+       list:'',
+       lists:'',
+        operation: "",
+      orderStatue: "",
+      quality: "",
+      rentStyle: "",
+      returntime: ""
     }
   },
   methods: {
       btn(){
-          var c= this.xm_;
-        for(let i in this.list){
-            if(this.list[i].name===c){
-               this.lists=this.list[i]
-               this.photo=this.lists.tel
-               this.sfz=this.lists.id
-               this.jf=this.lists.coin
-               this.pjb=this.lists.integral
-               this.yx=this.lists.email
-            }else if(c===""){
-               this.photo=""
-               this.sfz=""
-               this.jf=""
-               this.pjb=""
-               this.yx=""
-                alert("请输入车主名");
-            }
-            
-        }
+        this.$axios.post(
+      'http://wlz.in.8866.org:30167/edit/findByPhone',
+       this.$qs.stringify(
+       {
+          "mname":this.xm,
+          "phone":this.phone
+       })).then((res)=>{
+         this.list=res.data;
+       this.yx=this.list[0].email;
+       this.sfz=this.list[0].identity;
+       this.xm_=this.list[0].username;
+       this.jf=this.list[0].integral;
+       this.pjb=this.list[0].pjmoney;
+      this.lists=this.list[1]
+     
+       }).catch((err)=>{
+         console.log(err)
+       });
+    
 
       }
-  },
-  components: {
-
   }
 }
 </script>

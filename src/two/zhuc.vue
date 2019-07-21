@@ -39,6 +39,26 @@ export default {
   },
   methods: {
      btn(){
+
+ this.$axios.post(
+     
+      'http://wlz.in.8866.org:30167/edit/editmember',
+      
+       this.$qs.stringify(
+       {
+          "mname":this.xm,
+          "phone":this.phone,
+          "mgrender":"女",
+          "card":this.id
+       })).then((res)=>{
+          console.log(res)
+         this.list=res.data.list;
+        
+       }).catch((err)=>{
+         console.log(err)
+       });
+     
+
        console.log(this.xm)
        console.log(this.phone)
        console.log(this.id)
@@ -51,7 +71,7 @@ export default {
           alert('请输入正确的手机号')
         }else if(!reg2.test(this.id)){
           alert('请输入正确的证件号')
-        }else{
+        }else {
           alert("会员注册成功")
         }  
          
@@ -60,6 +80,9 @@ export default {
   },
   components: {
 
+  },
+  mounted(){
+    
   }
 }
 </script>
