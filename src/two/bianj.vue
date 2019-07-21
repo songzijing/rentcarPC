@@ -10,7 +10,7 @@
       <input type='text' v-model='n_phone'>
     </p>
     <p class='btn'>
-      <button @click='btn'>确定注册</button>
+      <button @click='btn'>确定提交</button>
     </p>
     </div>
   </div>
@@ -22,31 +22,24 @@ export default {
     return {
       phone:'',
       n_phone:'',
-      list:[
-         {
-           "name":"周天",
-           "tel":"13935594304",
-           "g_time":"2018-12-07",
-           "c_model":"SUV",
-           "rental":"日租",
-           "done":"已完成",
-           "operate":"无"
-         },
-        {
-          "name":"陈先生",
-           "tel":"18239953334",
-           "g_time":"2018-8-07",
-           "c_model":"ABC",
-           "rental":"月租",
-           "done":"未完成",
-           "operate":"有"
-         }
-       ],
+      list:[],
        lists:""
     }
   },
   methods: {
     btn(){
+       this.$axios.post(
+      'http://wlz.in.8866.org:30167/edit/setNewPhone',
+      
+       this.$qs.stringify(
+       {
+          "phone":this.phone,
+          "n_phone":this.n_phone
+       })).then((res)=>{
+         this.list=res.data;
+       }).catch((err)=>{
+         console.log(err)
+       });
        var p= this.phone;
         for(let i in this.list){
             if(this.list[i].tel===p){
@@ -63,6 +56,15 @@ export default {
   },
   components: {
 
+  },
+  mounted(){
+    this.$axios.post(
+       'https://www.easy-mock.com/mock/5d316209d57bda32b386d9b7/car/vip_check',this.$qs.stringify(
+       {})).then((res)=>{
+         this.list=res.data.list;
+       }).catch((err)=>{
+         console.log(err)
+       });
   }
 }
 </script>

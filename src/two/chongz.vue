@@ -7,7 +7,7 @@
     </p>
     <p class='zh'>
       <span>账户余额 :</span>
-      <span>{{yue}}</span>
+      <span>{{pjmoney}}</span>
     </p>
     <p class='btn'>
       <button @click='btn'>确定</button>
@@ -20,14 +20,25 @@
 export default {
   data() {
     return {
-       yue:0,
+       pjmoney:0,
        cz:''
     }
   },
   methods: {
     btn(){
-      this.yue+=(this.cz)-0;
+      this.pjmoney+=(this.cz)-0;
+       this.$axios.post(
+      'http://wlz.in.8866.org:30167/edit/editbalance',
       
+       this.$qs.stringify(
+       {
+          "phone":this.phone,
+          "pjmoney":this.pjmoney
+       })).then((res)=>{
+        console.log(res)
+       }).catch((err)=>{
+         console.log(err)
+       });
     }
   },
   components: {
