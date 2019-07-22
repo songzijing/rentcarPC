@@ -22,7 +22,7 @@
         </p>
         <p id="boo">
            <!-- @change="keep()" -->
-          <el-checkbox v-model="checked" @change="keep()">保持登录状态</el-checkbox>
+          <el-checkbox v-model="checked" @change="keep()">保存密码</el-checkbox>
           <a href>忘记密码？</a>
         </p>
         <p>
@@ -49,7 +49,7 @@ export default {
     let str= JSON.parse(localStorage.getItem('checked_'));
     this.checked=str;
     this.user=localStorage.getItem('userName_');
-    this.pass=localStorage.getItem('passWord_');
+    this.pass=localStorage.getItem('passWord_'); 
    }, 
   mounted() {
     this.$axios
