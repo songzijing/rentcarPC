@@ -14,33 +14,33 @@
        <div class='main'>
          <p class='cx'>
            <span>车牌号：</span>
-           <input type="text" value='豫A6666' class='l' v-model='car_'>
+           <input type="text" class='l' v-model='car_'>
            <button @click='btn'>查询</button>
          </p>
          <div class='info'>
             <p>
               <span>车牌号：</span>
-              <span>{{car_}}</span>
+              <span>{{license}}</span>
             </p>
             <p>
              <span> 发动机号码：</span>
-              <span>{{lists.tel}}</span>
+              <span>{{fdong}}</span>
             </p>
             <p>
               <span>核载人数：</span>
-              <span>{{lists.num}}</span>
+              <span>{{seat}}</span>
             </p>
             <p>
               <span>注册时间：</span>
-              <span>{{lists.z_time}}</span>
+              <span>{{zhuce}}</span>
             </p>
             <p>
               <span>发证时间：</span>
-              <span>{{lists.f_time}}</span>
+              <span>{{fazheng}}</span>
             </p>
             <p>
               <span>车主：</span>
-              <span>{{lists.name}}</span>
+              <span>{{owner}}</span>
             </p>
          </div>
        </div>
@@ -77,15 +77,23 @@ export default {
   },
   methods: {
      btn(){
-        var c= this.car_;
-        for(let i in this.list){
-            if(this.list[i].car===c){
-               this.lists=this.list[i]
-            }else if(c===""){
-               alert("请输入查询车辆");
-            }
-            console.log(this.lists)
-        }
+        this.$axios.post('http://wlz.in.8866.org:30167/vehicle/findByLicense',
+          this.$qs.stringify({
+            "license":this.car_
+          }))
+          .then((res)=>{
+            console.log(res.data)
+            this.list=res.data;
+           this.license=res.data.license;
+           this.seat=res.data.seat;
+           this.owner=res.data.owner;
+           this.zhuce=res.data.zhuce;
+           this.fazheng=res.data.fazheng;
+           this.fdong=res.data.fdong;
+
+          }).catch((err)=>{
+            console.log(err)
+          });
         
      }
   },
