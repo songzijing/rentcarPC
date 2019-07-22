@@ -65,7 +65,6 @@ export default {
         console.log(this.list); 
       })
       .catch(err => {
-        // throw err;
          this.$store.commit("isflag"); 
       });   
   },
