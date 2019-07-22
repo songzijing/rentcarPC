@@ -5,16 +5,6 @@
         <slot name="goback"></slot>
       </div>
       <slot name="pagination"></slot>
-      <!-- <el-pagination
-        small
-        @current-change="handleCurrentChange"
-        @next-click="NextData"
-        @prev-click="PrevData"
-        layout="prev, pager, next"
-        :current-page= "currentPage"
-        :pageSize= "pageSize"
-        :total="pageTotal">
-      </el-pagination> -->
     </div>
 </template>
 
@@ -28,40 +18,8 @@ export default {
   methods: {
     changeName(){
       this.$store.state.homeName = "首页";
-    },
-    // handleCurrentChange: function(currentPage){ 
-    //   this.currentPage = currentPage; 
-    //   console.log(this.currentPage);
-    // },
-    // NextData(){
-    //   this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
-    //   console.log(this.list);
-    // },
-    // PrevData(){
-    //   this.list = this.displayList.slice(this.currentPage*this.pageSize,(this.currentPage-1)*this.pageSize);
-    //   console.log(this.list);
-    // }
-  },
-  components: {
-
-  },
-  // watch:{
-  //    currentPage: function(){
-  //     this.NextData();
-  //     console.log("1*******");
-  //    }
-  // },
-  // mounted(){
-  //  this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
-  //     console.log(res);
-  //     this.displayList = res.data.getneworder;
-  //     this.pageTotal = this.displayList.length;
-  //     this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
-  //     console.log(this.list);
-  //   }).catch((err)=>{
-  //     throw err;
-  //   });
-  // }
+    }
+  }
 }
 </script>
 

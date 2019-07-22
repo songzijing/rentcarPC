@@ -49,8 +49,10 @@ let store=new Vuex.Store({
     // 门店导航名
     homeName:"首页",
     // 查看 相应的下标
-    carIndex:""
-  },
+    carIndex:"",
+    // 控制请示数据慢的时候  正在加载显示
+    acceptShow:true
+    },
   mutations: {
     
     //接收预订管理的当前订单号

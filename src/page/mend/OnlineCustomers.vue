@@ -49,7 +49,9 @@ export default {
       // 渲染的数据
       list:[],
       // 数据总数
-      pageTotal:0
+      pageTotal:0,
+      // 数据加载慢时 显示正在加载
+      accShow:this.$store.state.acceptShow
     }
   },
   methods: {
@@ -80,7 +82,7 @@ export default {
   },
    mounted(){
     // 请求数据
-   this.$axios.post('http://hdhd.in.8866.org:30165/onclient/getonclient').then((res)=>{
+   this.$axios.post('http://wlz.in.8866.org:30167/onclient/getonclient').then((res)=>{
       console.log(res);
       this.displayList = res.data.onclient;
       // 获取数据总数
@@ -90,6 +92,11 @@ export default {
       console.log(this.list);
     }).catch((err)=>{
       throw err;
+    });
+
+    this.$axios.interceptors.request.use((res)=>{
+      this.accShow = false;
+      return res;
     });
   },
   components: {

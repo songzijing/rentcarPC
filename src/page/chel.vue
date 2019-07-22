@@ -54,25 +54,14 @@ export default {
   data() {
     return {
     car_:'',
-  list:[
-         {
-           "car":"豫A6666",
-           "tel":"246764K",
-           "num":"5",
-           "z_time":"2017-07-07",
-           "f_time":"2017-08-07",
-           "name":"周天"
-         },
-        {
-           "car":"豫A6896",
-           "tel":"156664Q",
-           "num":"4",
-           "z_time":"2019-07-07",
-           "f_time":"2019-08-07",
-           "name":"陈先生"
-         }
-       ],
-       lists:""
+    license:'',
+    fdong:'',
+    seat:'',
+    zhuce:'',
+    fazheng:'',
+    owner:'',
+  
+      
     }
   },
   methods: {
@@ -83,7 +72,7 @@ export default {
           }))
           .then((res)=>{
             console.log(res.data)
-            this.list=res.data;
+          
            this.license=res.data.license;
            this.seat=res.data.seat;
            this.owner=res.data.owner;
