@@ -57,7 +57,7 @@
     },
     mounted(){
        // 请求数据
-      this.$axios.post('http://hdhd.in.8866.org:30165/sumfind/getsumfind',this.$qs.stringify({
+      this.$axios.post('http://wlz.in.8866.org:30167/sumfind/getsumfind',this.$qs.stringify({
         license:this.$store.state.carIndex
       })).then((res)=>{
         console.log(res);

@@ -15,7 +15,7 @@
           <img src="../../../assets/img/home_icon2.png" alt="">
           <div class="info">
             <p>上传照片数量</p>
-            <p>{{orderLen}}</p>
+            <p>6</p>
           </div>
         </router-link>
       </li>
@@ -66,19 +66,19 @@ export default {
   },
   mounted() {
     // 下单总数数据长度
-    this.$axios.post('http://hdhd.in.8866.org:30165/orderid/getorderid').then((res)=>{
+    this.$axios.post('http://wlz.in.8866.org:30167/orderid/getorderid').then((res)=>{
       this.orderLen = res.data.orderscount;
     }).catch((err)=>{
       throw err;
     });
 
-  this.$axios.post('http://hdhd.in.8866.org:30165/order/getorder').then((res)=>{
+  this.$axios.post('http://wlz.in.8866.org:30167/order/getorder').then((res)=>{
       this.vipLen = res.data.vipcount;
     }).catch((err)=>{
       throw err;
     });
 
-    this.$axios.post('http://hdhd.in.8866.org:30165/onclient/getonclient').then((res)=>{
+    this.$axios.post('http://wlz.in.8866.org:30167/onclient/getonclient').then((res)=>{
       this.onlineLen = res.data.onclient.length;
     }).catch((err)=>{
       throw err;

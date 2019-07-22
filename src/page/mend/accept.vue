@@ -12,7 +12,7 @@
       <li slot="cont" v-for="(item,index) in list" :key="index">
         <span slot="one_cont">{{item.license}}</span>
         <span slot="two_cont">{{item.owner}}</span>
-        <span slot="three_cont" id="txtSty">{{item.orderStatue | changeSty(index)}}</span>
+        <span slot="three_cont">{{item.orderStatue}}</span>
         <span slot="four_cont">{{item.orderstimes}}</span>
         <span slot="five_cont">{{item.createtime}}</span>
         <span slot="six_cont">{{item.indentmoney}}</span>
@@ -50,6 +50,8 @@ export default {
       list:[],
       // 数据总数
       pageTotal:0,
+      // 数据加载慢时 显示正在加载
+      accShow:this.$store.state.acceptShow
     }
   },
   mounted(){
@@ -62,7 +64,7 @@ export default {
     }
 
     // 请求数据
-    this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
+    this.$axios.post('http://wlz.in.8866.org:30167/neworder/getneworder').then((res)=>{
       this.displayList = res.data.getneworder;
       // 获取数据总数
       this.pageTotal = this.displayList.length;
@@ -70,6 +72,11 @@ export default {
       this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
     }).catch((err)=>{
       throw err;
+    });
+    
+    this.$axios.interceptors.request.use((res)=>{
+      this.accShow = false;
+      return res;
     });
   },
   methods: {
@@ -107,16 +114,6 @@ export default {
      currentPage: function(){
       this.NextData();
      }
-  },
-  filters:{
-    // changeSty(val,index){
-    //   console.log(val);
-    //   if(val == "驾驶中"){
-    //     let lis = document.getElementById("lis").getElementsByTagName("li");
-    //     console.log(lis);
-    //     lis.add("txtSty");
-    //   }
-    // }
   }
 }
 
@@ -128,9 +125,6 @@ export default {
     justify-content: flex-end;
     align-items: center;
     border-radius:  0 0 13px 13px;
-}
-.txtSty{
-  color: red;
 }
 @media all and (max-width: 1366px) {
   .block{
