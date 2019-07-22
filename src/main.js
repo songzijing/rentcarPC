@@ -89,25 +89,6 @@ let store=new Vuex.Store({
       state.carIndex = index;
     }
   },
-  // actions:{
-  //   // 门店首页的数据请求
-  //   homeAxios(context){
-  //     axios({
-  //       method:"post",
-  //       url:'http://hdhd.in.8866.org:30165/neworder/getneworder'
-  //     }).then((res)=>{
-  //       this.state.pagesize += 4;
-  //       console.log(res);
-  //       // 将请求过来的数据赋给 homelist数组
-  //       context.state.homelist =  res.data.getneworder;
-  //       // 分页器的总数据数
-  //       this.state.pagetotal = this.state.homelist.length;
-  //       console.log(this.state.pagetotal);
-  //     }).catch((err)=>{
-  //       throw err;
-  //     })
-  //   }
-  // },
   getters:{
     numa(state){
       let a=parseInt(state.num)+1

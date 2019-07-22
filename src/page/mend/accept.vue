@@ -55,7 +55,6 @@ export default {
   mounted(){
     // 改变ul的高度 
     document.getElementById("lis").style.height = '256px';
-
     // 请求数据
     this.$axios.post('http://hdhd.in.8866.org:30165/neworder/getneworder').then((res)=>{
       this.displayList = res.data.getneworder;
