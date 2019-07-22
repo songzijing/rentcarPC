@@ -11,7 +11,7 @@
         <slot name="seven"></slot>
       </header>
       <ul class="list" id="lis">
-        <slot name="cont" v-if="this.$store.state.acceptShow">
+        <slot name="cont">
             <slot name="one_cont"></slot>
             <slot name="two_cont"></slot>
             <slot name="three_cont"></slot>
@@ -20,9 +20,6 @@
             <slot name="six_cont"></slot>
             <slot name="seven_cont"></slot>
         </slot>
-        <div class="load" v-else>
-          <i class="el-icon-loading"></i>正在加载中……
-        </div>
       </ul>
       <slot name="page"></slot>
     </div>

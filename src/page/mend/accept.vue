@@ -19,6 +19,9 @@
         <span slot="seven_cont" @click="show(index)">查看</span>
       </li>
     </List>
+    <div class="load" v-show="acceptShow">
+      <i class="el-icon-loading"></i>正在加载中……
+    </div>
     <!-- 分页器 -->
     <div class="block">
       <el-pagination
@@ -51,7 +54,7 @@ export default {
       // 数据总数
       pageTotal:0,
       // 数据加载慢时 显示正在加载
-      accShow:this.$store.state.acceptShow
+      acceptShow:true
     }
   },
   mounted(){
@@ -65,18 +68,15 @@ export default {
 
     // 请求数据
     this.$axios.post('http://wlz.in.8866.org:30167/neworder/getneworder').then((res)=>{
+      this.acceptShow = false;
       this.displayList = res.data.getneworder;
       // 获取数据总数
       this.pageTotal = this.displayList.length;
       // 截取4条数据
       this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
     }).catch((err)=>{
+      this.acceptShow = true;
       throw err;
-    });
-    
-    this.$axios.interceptors.request.use((res)=>{
-      this.accShow = false;
-      return res;
     });
   },
   methods: {
@@ -119,12 +119,31 @@ export default {
 
 </script>
 <style scoped lang='less'>
+.acceptlist{
+  position:relative;
+}
 .block{
     height: 90px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     border-radius:  0 0 13px 13px;
+}
+.load{
+   font-size: 18px;
+   color: #888;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   position: absolute;
+   top: 90px;
+   left: 50%;
+   transform: translateX(-50%);
+   i{
+     margin-right: 3px;
+   }
 }
 @media all and (max-width: 1366px) {
   .block{

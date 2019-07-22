@@ -1,5 +1,5 @@
 <template>
-  <div class="order">
+  <div class="vip">
      <List>
       <span slot="one">姓名</span>
       <span slot="two">手机号</span>
@@ -17,6 +17,10 @@
         <div slot="seven_cont" class="icon_del"><i class="el-icon-edit-outline" @click="edit(index)"></i><i class="el-icon-delete" @click="del(index)"></i></div>
       </li>
      </List>
+     <!-- 正在加载…… -->
+     <div class="load" v-show="accShow">
+        <i class="el-icon-loading"></i>正在加载中……
+      </div>
      <!-- 分页器 -->
     <Page>
       <router-link to="/mend" slot="goback">返回</router-link> 
@@ -53,7 +57,7 @@ export default {
       // 数据总数
       pageTotal:0,
       // 数据加载慢时 显示正在加载
-      accShow:this.$store.state.acceptShow
+      accShow:true
     }
   },
   methods: {
@@ -147,19 +151,16 @@ export default {
    mounted(){
     //  请求数据
    this.$axios.post('http://wlz.in.8866.org:30167/findvip/getfindvip').then((res)=>{
-      console.log(res);
+      // 正在加载……
+      this.accShow = false;
       this.displayList = res.data.findvip;
       // 获取数据
       this.pageTotal = this.displayList.length;
       // 截取8条数据
       this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
     }).catch((err)=>{
+      this.accShow = true;
       throw err;
-    });
-
-    this.$axios.interceptors.request.use((res)=>{
-      this.accShow = false;
-      return res;
     });
   },
   components: {
@@ -170,8 +171,9 @@ export default {
 </script>
 
 <style scoped lang="less">
-.order{
+.vip{
   padding: 0 31px 30px 31px;
+  position: relative;
   .manage{
     width: 78px;
     flex: none;
@@ -201,6 +203,22 @@ export default {
       margin-right: 30px;
     }
   }
+}
+.load{
+   font-size: 18px;
+   color: #888;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   position: absolute;
+   top: 90px;
+   left: 50%;
+   transform: translateX(-50%);
+   i{
+     margin-right: 3px;
+   }
 }
 @media all and (max-width: 1366px){
   .order{

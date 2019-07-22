@@ -34,9 +34,12 @@
         </el-pagination>
       </Page>
      </List>
+     <!-- 查看 -->
      <LookOver v-else></LookOver>
-    
-    
+     <!-- 正在加载…… -->
+     <div class="load" v-show="accShow">
+        <i class="el-icon-loading"></i>正在加载中……
+      </div>
   </div>
 </template>
 
@@ -59,7 +62,7 @@ export default {
       // 数据总数
       pageTotal:0,
       // 数据加载慢时 显示正在加载
-      accShow:this.$store.state.acceptShow
+      accShow:true
     }
   },
   methods: {
@@ -100,20 +103,20 @@ export default {
   mounted(){
     // 请求数据
   this.$axios.post('http://wlz.in.8866.org:30167/finforders/getfinforders').then((res)=>{
-     console.log(res);
+     // 正在加载中
+     this.accShow = false;
+
      this.displayList = res.data.finforders;
+     console.log(this.displayList);
      // 获取数据总数
      this.pageTotal = this.displayList.length;
      // 截取8条数据
      this.list = this.displayList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize);
    }).catch((err)=>{
+     // 正在加载中
+     this.accShow = true;
      throw err;
-   x});
-
-   this.$axios.interceptors.request.use((res)=>{
-      this.accShow = false;
-      return res;
-    });
+   });
   },
   components: {
       List,
@@ -126,6 +129,23 @@ export default {
 <style scoped lang="less">
 .order{
   padding: 0 31px 30px 31px;
+  position: relative;
+}
+.load{
+   font-size: 18px;
+   color: #888;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   position: absolute;
+   top: 90px;
+   left: 50%;
+   transform: translateX(-50%);
+   i{
+     margin-right: 3px;
+   }
 }
 @media all and (max-width: 1366px){
   .order{

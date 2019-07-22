@@ -1,5 +1,5 @@
 <template>
-  <div class="look">
+  <div class="look" id="lookHei">
     <div class="back" @click="show">
         <img src="../../assets/img/back.png">
     </div>
@@ -38,6 +38,10 @@
         <input type="text" id="shop" :value="item.returnStore">
       </li>
     </ul>
+    <!-- 正在加载…… -->
+    <div class="load" v-show="accShow">
+      <i class="el-icon-loading"></i>正在加载中……
+    </div>
   </div>
 </template>
 
@@ -46,7 +50,9 @@
   export default {
     data() {
       return {
-        lookList:[]
+        lookList:[],
+        // 数据加载慢时 显示正在加载
+        accShow:true
       }
     },
     methods: {
@@ -56,14 +62,24 @@
         }
     },
     mounted(){
+      // 改变ul的高度 
+      console.log("宽："+document.body.clientWidth);
+      if(document.body.clientWidth<=1366){
+        document.getElementsByClassName("look")[0].style.height = '483px';
+        }else{
+        document.getElementsByClassName("look")[0].style.height = '690px';
+      }
+
        // 请求数据
       this.$axios.post('http://wlz.in.8866.org:30167/sumfind/getsumfind',this.$qs.stringify({
         license:this.$store.state.carIndex
       })).then((res)=>{
-        console.log(res);
+        // 请求数据  显示 正在加载
+        this.accShow = false;
         this.lookList.push(res.data.sumfind[0]);
-        console.log(this.lookList);
       }).catch((err)=>{
+        // 请求数据  显示 正在加载
+        this.accShow = true;
         throw err;
       });
     }
@@ -78,6 +94,7 @@
     border-radius: 13px;
     font-size: 14px;
     color: #333;
+    position: relative;
     .back{
         width: 100%;
         height: 70px;
@@ -117,6 +134,22 @@
             margin-right: 13px;
         }
     }
+}
+.load{
+   font-size: 18px;
+   color: #888;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   position: absolute;
+   top: 90px;
+   left: 50%;
+   transform: translateX(-50%);
+   i{
+     margin-right: 3px;
+   }
 }
 @media all and (max-width: 1366px) {
   .look{

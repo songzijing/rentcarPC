@@ -89,7 +89,11 @@ let store=new Vuex.Store({
     // 门店首页  查看  获取相应的车牌号下标
     carNum(state,index){
       state.carIndex = index;
+    },
+    changeDa(stat){
+      stat.acceptShow = false;
     }
+
   },
   getters:{
     numa(state){
